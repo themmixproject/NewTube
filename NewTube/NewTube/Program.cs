@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using NewTube.Client.Pages;
 using NewTube.Components;
 using NewTube.Components.Account;
 using NewTube.Data;
