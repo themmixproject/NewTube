@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using NewTube.Components;
-using NewTube.Components.Account;
-using NewTube.Data;
+using NewTube.Server.Components;
+using NewTube.Server.Components.Account;
+using NewTube.Server.Data;
 
-namespace NewTube
+namespace NewTube.Server
 {
     public class Program
     {

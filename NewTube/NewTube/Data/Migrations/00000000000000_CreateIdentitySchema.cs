@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace NewTube.Migrations
+namespace NewTube.Server.Migrations
 {
     /// <inheritdoc />
     public partial class CreateIdentitySchema : Migration

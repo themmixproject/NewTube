@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
-using NewTube.Data;
+using NewTube.Server.Data;
 
-namespace NewTube.Components.Account
+namespace NewTube.Server.Components.Account
 {
     internal sealed class IdentityUserAccessor(UserManager<ApplicationUser> userManager, IdentityRedirectManager redirectManager)
     {

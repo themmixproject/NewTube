@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewTube", "NewTube\NewTube\NewTube.csproj", "{8B525CCD-FE21-4B37-B838-F5910421F773}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewTube.Server", "NewTube\NewTube\NewTube.Server.csproj", "{8B525CCD-FE21-4B37-B838-F5910421F773}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewTube.Client", "NewTube\NewTube.Client\NewTube.Client.csproj", "{3A506AF8-B3B3-457A-BC42-6028549D253F}"
 EndProject

@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components;
 
-namespace NewTube.Components.Account
+namespace NewTube.Server.Components.Account
 {
     internal sealed class IdentityRedirectManager(NavigationManager navigationManager)
     {

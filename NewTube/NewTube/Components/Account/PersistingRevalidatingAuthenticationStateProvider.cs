@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using NewTube.Client;
-using NewTube.Data;
+using NewTube.Server.Data;
 
-namespace NewTube.Components.Account
+namespace NewTube.Server.Components.Account
 {
     // This is a server-side AuthenticationStateProvider that revalidates the security stamp for the connected user
     // every 30 minutes an interactive circuit is connected. It also uses PersistentComponentState to flow the

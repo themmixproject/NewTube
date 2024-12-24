@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
-using NewTube.Components.Account.Pages;
-using NewTube.Components.Account.Pages.Manage;
-using NewTube.Data;
+using NewTube.Server.Components.Account.Pages;
+using NewTube.Server.Components.Account.Pages.Manage;
+using NewTube.Server.Data;
 
 namespace Microsoft.AspNetCore.Routing
 {
