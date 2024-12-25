@@ -1,13 +1,13 @@
 ﻿.nav-item {
-    padding: 1em 1.75em;
+    padding: 0.75em 1.75em;
     transform: skew(30deg);
     background-color: #4DAFF4;
     margin: 0 0.25em;
+    text-align: center;
 }
 
 .nav-item:first-child {
     position: relative;
-    padding: 1em 0;
     padding-left: 0;
     padding-right: 1.5em;
 }
@@ -23,15 +23,11 @@
     transform: skew(-30deg);
 }
 
-.label-wrapper {
-    display: flex;
-    justify-content: center;
-    transform: skew(-30deg);
-    font-size: 2em;
-    font-weight: bold;
-}
-
 a {
     color: white;
+    display: inline-block;
+    font-size: 1.25em;
+    font-weight: bold;
     text-decoration: none;
+    transform: skew(-30deg);
 }
