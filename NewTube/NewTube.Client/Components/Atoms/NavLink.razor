@@ -1,0 +1,10 @@
+﻿<div class="nav-link">
+    <div class="nav-link-label">
+        <a href="@href">@label</a>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string? href { get; set; } = null;
+    [Parameter] public string? label { get; set; } = null;
+}
