@@ -5,18 +5,12 @@
     margin: 0 0.25em;
 }
 
-.nav-link:first-of-type {
-    transform: skew(30deg);
+.nav-link:first-child {
     position: relative;
     padding: 1em 0.75em;
 }
 
-.nav-link:first-of-type .nav-link-label {
-    margin-right: 0.75em;
-    padding: 0em;
-}
-
-.nav-link:first-of-type::before {
+.nav-link:first-child::before {
     content: '';
     background-color: inherit;
     position: absolute;
@@ -33,6 +27,11 @@
     transform: skew(-30deg);
     font-size: 2em;
     font-weight: bold;
+}
+
+.nav-link:first-child .nav-link-label{
+    margin-right: 0.75em;
+    padding: 0em;
 }
 
 .nav-link-label a {
