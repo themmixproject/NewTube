@@ -1,27 +1,29 @@
-﻿.nav-link {
+﻿.nav-item {
     padding: 1em 1.75em;
     transform: skew(30deg);
     background-color: #4DAFF4;
     margin: 0 0.25em;
 }
 
-.nav-link:first-child {
+.nav-item:first-child {
     position: relative;
-    padding: 1em 0.75em;
+    padding: 1em 0;
+    padding-left: 0;
+    padding-right: 1.5em;
 }
 
-.nav-link:first-child::before {
+.nav-item:first-child::before {
     content: '';
     background-color: inherit;
     position: absolute;
-    top: 0;
     left: -1.25em;
-    width: 4em;
-    height: 100%;
+    top: 0;
+    bottom: 0;
+    width: 2.625em;
     transform: skew(-30deg);
 }
 
-.nav-link-label {
+.label-wrapper {
     display: flex;
     justify-content: center;
     transform: skew(-30deg);
@@ -29,12 +31,7 @@
     font-weight: bold;
 }
 
-.nav-link:first-child .nav-link-label{
-    margin-right: 0.75em;
-    padding: 0em;
-}
-
-.nav-link-label a {
+a {
     color: white;
     text-decoration: none;
 }
