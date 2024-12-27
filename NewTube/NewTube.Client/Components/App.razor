@@ -1,7 +1,11 @@
 ﻿@page "/"
 
 <MainContainer>
-    <PrimarySection heading="new section" >
+    <PrimarySection heading="new section" headerLink="@headerLink">
         Hello world!
     </PrimarySection>
 </MainContainer>
+
+@code {
+    public Anchor headerLink = new Anchor("/featured", "see more");
+}

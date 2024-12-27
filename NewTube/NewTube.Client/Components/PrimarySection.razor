@@ -1,12 +1,12 @@
 ﻿<section>
-    <PrimarySectionHeader heading="@heading"/>
+    <PrimarySectionHeader heading="@heading" headerLink="@headerLink"/>
     <div class="section-content">
         @ChildContent
     </div>
-
 </section>
 
 @code {
     [Parameter] public RenderFragment? ChildContent { get; set; } = null;
-    [Parameter] public string? heading { get; set; }
+    [Parameter] public string? heading { get; set; } = null;
+    [Parameter] public Anchor? headerLink { get; set; } = null;
 }
