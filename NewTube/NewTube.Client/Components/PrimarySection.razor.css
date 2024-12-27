@@ -1,0 +1,7 @@
+﻿section {
+    margin: 0.25em 0;
+}
+
+section:first-of-type {
+    margin-top: 0.5em;
+}

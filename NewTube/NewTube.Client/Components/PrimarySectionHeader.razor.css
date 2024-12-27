@@ -1,0 +1,11 @@
+﻿header {
+    background-color: #4DAFF4;
+    color: white;
+    padding: 0.5em;
+}
+
+h1 {
+    font-size: 1.75em;
+    font-weight: bold;
+    margin: 0;
+}
