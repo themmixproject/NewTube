@@ -1,0 +1,19 @@
+﻿.rating-display {
+    display: flex;
+    flex-direction: row;
+}
+
+.rating-display-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.rating-stars-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-right: 0.5em;
+}
+
+.rating-amount-wrapper {
+    margin-top: 0.5em;    
+}
