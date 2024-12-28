@@ -60,13 +60,7 @@ namespace NewTube.Server
 
             app.UseHttpsRedirection();
 
-            string WorkingDirPath = Directory.GetCurrentDirectory();
-            string ClientAssetsPath = Path.Combine(WorkingDirPath + "../../Ember.Client", "Assets");
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(ClientAssetsPath),
-                RequestPath = "/assets"
-            });
+            app.UseStaticFiles();
             app.UseAntiforgery();
 
             app.MapRazorComponents<Client.Index>()
@@ -75,6 +69,14 @@ namespace NewTube.Server
 
             // Add additional endpoints required by the Identity /Account Razor components.
             app.MapAdditionalIdentityEndpoints();
+
+            string WorkingDirPath = Directory.GetCurrentDirectory();
+            string ClientAssetsPath = Path.Combine(WorkingDirPath + "../../NewTube.Client", "Assets");
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(ClientAssetsPath),
+                RequestPath = "/assets"
+            });
 
             app.Run();
         }
