@@ -1,0 +1,18 @@
+﻿.rating-star {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 2em;
+    width: 2em;
+}
+
+.rating-star[type='full'] {
+    background-image: url("/assets/rating_star_full.svg");
+}
+
+.rating-star[type='half'] {
+    background-image: url("/assets/rating_star_half.svg");
+}
+
+.rating-star[type='blank'] {
+    background-image: url("/assets/rating_star_blank.svg");
+}
