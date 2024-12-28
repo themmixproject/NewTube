@@ -19,37 +19,3 @@
 .video-metadata-wrapper p {
     margin: 0.25em 0;
 }
-
-.labeled-content-wrapper {
-    margin: 0.0625em 0;
-}
-
-.labeled-content-wrapper label {
-    color: #b7b7b7;
-    margin-right: 0.25em;
-}
-
-.added-in-category-container {
-    display: flex;
-    flex-direction: row;
-}
-
-.added-in-category-container:first-child {
-    margin-right: 1em;
-    background-color: blue;
-}
-
-.rating-display {
-    display: flex;
-    flex-direction: row;
-}
-
-.rating-stars-wrapper {
-    display: flex;
-    flex-direction: row;
-    margin-right: 0.5em;
-}
-
-.rating-amount-wrapper {
-    margin-top: 0.75em;
-}
