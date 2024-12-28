@@ -1,0 +1,8 @@
+﻿.added-in-category {
+    display: flex;
+    flex-direction: row;
+}
+
+::deep .labeled-content:first-child {
+    margin-right: 0.5em;
+}

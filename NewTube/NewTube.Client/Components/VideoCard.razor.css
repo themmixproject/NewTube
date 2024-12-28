@@ -36,6 +36,7 @@
     flex-direction: row;
 }
 
-.added-in-category-container .labeled-content-wrapper:first-child{
-    margin-right: 0.25em;
+.added-in-category-container:first-child {
+    margin-right: 1em;
+    background-color: blue;
 }
