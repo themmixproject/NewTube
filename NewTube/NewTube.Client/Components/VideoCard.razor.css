@@ -7,8 +7,6 @@
 }
 
 .video-metadata-wrapper {
-/*    display: flex;
-    flex-direction: column;*/
     margin-left: 0.5em;
     font-size: 0.75em;
 }
@@ -39,4 +37,40 @@
 .added-in-category-container:first-child {
     margin-right: 1em;
     background-color: blue;
+}
+
+.rating-display {
+    display: flex;
+    flex-direction: row;
+}
+
+.rating-stars-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-right: 0.5em;
+}
+
+.rating-amount-wrapper {
+    margin-top: 0.75em;
+}
+
+.rating-star-full {
+    background: url("/assets/rating_star_full.svg");
+    background-size: contain;
+    height: 2em;
+    width: 2em;
+}
+
+.rating-star-blank {
+    background: url("/assets/rating_star_blank.svg");
+    background-size: contain;
+    height: 2em;
+    width: 2em;
+}
+
+.rating-star-half {
+    background: url("/assets/rating_star_half.svg");
+    background-size: contain;
+    height: 2em;
+    width: 2em;
 }
