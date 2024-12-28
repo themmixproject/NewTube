@@ -1,0 +1,41 @@
+﻿.video-card {
+    padding: 0.5em;
+    background: linear-gradient(-45deg, transparent 1.25em, white 0);
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.5em;
+}
+
+.video-metadata-wrapper {
+/*    display: flex;
+    flex-direction: column;*/
+    margin-left: 0.5em;
+    font-size: 0.75em;
+}
+
+.video-metadata-wrapper h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.video-metadata-wrapper p {
+    margin: 0.25em 0;
+}
+
+.labeled-content-wrapper {
+    margin: 0.0625em 0;
+}
+
+.labeled-content-wrapper label {
+    color: #b7b7b7;
+    margin-right: 0.25em;
+}
+
+.added-in-category-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.added-in-category-container .labeled-content-wrapper:first-child{
+    margin-right: 0.25em;
+}
