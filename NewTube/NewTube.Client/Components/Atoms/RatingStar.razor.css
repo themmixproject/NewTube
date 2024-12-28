@@ -1,8 +1,9 @@
 ﻿.rating-star {
     background-size: contain;
     background-repeat: no-repeat;
-    height: 2em;
-    width: 2em;
+    height: 1.75em;
+    width: 1.75em;
+    margin: 0 0.0625em;
 }
 
 .rating-star[type='full'] {
