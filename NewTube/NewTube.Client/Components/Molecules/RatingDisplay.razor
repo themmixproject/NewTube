@@ -1,10 +1,26 @@
 ﻿<div class="rating-display">
     <div class="rating-stars-wrapper">
-        <RatingStar type="full" />
-        <RatingStar type="full" />
-        <RatingStar type="full" />
-        <RatingStar type="half" />
-        <RatingStar type="blank" />
+        @for (int i = 1; i < 6; i++){
+            if (i <= Math.Floor((decimal)rating)) {
+                <RatingStar type="full" />
+            }
+            else if (i == Math.Ceiling(rating) && rating % 1 != 0) {
+                <RatingStar type="half" />
+            }
+            else {
+                <RatingStar type="empty" />
+            }
+        }
     </div>
-    <div class="rating-amount-wrapper">220 ratings</div>
+    <div class="rating-amount-wrapper">@GetRatingAmountString()</div>
 </div>
+
+@code {
+    [Parameter] public double rating { get; set; }
+    [Parameter] public int ratingAmount { get; set; }
+
+    private string GetRatingAmountString(){
+        string ratingString = ratingAmount > 1 ? "ratings" : "rating";
+        return ratingString + " " + ratingAmount;
+    }
+}
