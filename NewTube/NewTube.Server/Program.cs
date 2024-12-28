@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using NewTube.Server.Components;
 using NewTube.Server.Components.Account;
 using NewTube.Server.Data;
@@ -59,7 +60,13 @@ namespace NewTube.Server
 
             app.UseHttpsRedirection();
 
-            app.UseStaticFiles();
+            string WorkingDirPath = Directory.GetCurrentDirectory();
+            string ClientAssetsPath = Path.Combine(WorkingDirPath + "../../Ember.Client", "Assets");
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(ClientAssetsPath),
+                RequestPath = "/assets"
+            });
             app.UseAntiforgery();
 
             app.MapRazorComponents<Client.Index>()
