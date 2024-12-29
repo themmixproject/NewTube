@@ -1,0 +1,14 @@
+﻿<tr>
+    <td>
+        <label>@label</label>
+    </td>
+    <td>
+        <input type="@type" placeholder="@placeholder"/>
+    </td>
+</tr>
+
+@code {
+    [Parameter] public string? label { get; set; }
+    [Parameter] public string? placeholder { get; set; }
+    [Parameter] public string? type { get; set; }
+}
