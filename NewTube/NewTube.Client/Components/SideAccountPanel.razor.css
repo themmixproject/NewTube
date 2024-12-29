@@ -7,25 +7,3 @@
     padding-right: 1.25em;
     background: linear-gradient(-45deg, transparent 1em, white 0);
 }
-
-.account-feature {
-    display: flex;
-    flex-direction: row;
-    margin: 0.5em 0;
-}
-
-.account-feature label {
-    width: 6.5em;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-}
-
-hr {
-    margin: 0.5em 0;
-    height: 0.15em;
-    background-color: #c1c1c1;
-    border: 0;
-}
