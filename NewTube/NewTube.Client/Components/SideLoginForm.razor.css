@@ -1,0 +1,27 @@
+﻿.side-login-form {
+    width: 20em;
+    background-color: white;
+    padding: 0.25em 1em;
+}
+
+.account-feature {
+    display: flex;
+    flex-direction: row;
+    margin: 0.5em 0;
+}
+
+    .account-feature label {
+        width: 6.5em;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+hr {
+    margin: 0.5em 0;
+    height: 0.15em;
+    background-color: #c1c1c1;
+    border: 0;
+}
