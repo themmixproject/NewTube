@@ -14,14 +14,14 @@
     margin: 0.5em 0;
 }
 
-    .account-feature label {
-        width: 6.5em;
-        font-weight: bold;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+.account-feature label {
+    width: 6.5em;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    }
+}
 
 hr {
     margin: 0.5em 0;
