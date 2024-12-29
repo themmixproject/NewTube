@@ -1,12 +1,16 @@
 ﻿@page "/"
 
 <MainContainer>
-    <PrimarySection heading="new section" headerLink="@headerLink">
-        <VideoCard />
-    </PrimarySection>
-    <SecondarySection heading="Broadcast Yourself on NewTube">
-        test
-    </SecondarySection>
+    <div class="primary-content-wrapper">
+        <PrimarySection heading="new section" headerLink="@headerLink">
+            <VideoCard />
+        </PrimarySection>
+    </div>
+    <div class="secondary-content-wrapper">
+        <SecondarySection heading="Broadcast Yourself on NewTube">
+            test
+        </SecondarySection>
+    </div>
 </MainContainer>
 
 @code {

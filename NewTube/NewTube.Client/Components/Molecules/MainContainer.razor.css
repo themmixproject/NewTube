@@ -2,13 +2,18 @@
     display: flex;
     margin: 2em;
     justify-content: center;
-    max-width: 110em;
 }
 
 .main {
     display: flex;
     background-color: #ebebeb;
-    padding: 1em;
+    padding: 0.75em;
     border-radius: 0.25em;
     flex-direction: column;
+    max-width: 110em;
+}
+
+.row-wrapper {
+    display: flex;
+    flex-direction: row;
 }
