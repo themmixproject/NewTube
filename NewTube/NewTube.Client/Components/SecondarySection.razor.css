@@ -1,14 +1,3 @@
-﻿header {
-    color: white;
-    background-color: #feb25b;
-    font-size: 0.75em;
-    padding: 0.25em 0.5em;
-}
-
-header h2 {
-    margin: 0;
-}
-
-.section-content {
+﻿.section-content {
     margin-top: 1em;
 }
