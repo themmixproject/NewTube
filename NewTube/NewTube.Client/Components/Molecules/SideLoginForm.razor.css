@@ -13,3 +13,12 @@ table {
 table tbody ::deep tr td:first-child{
     width: 5.5em;
 }
+
+a {
+    float: right;
+    font-weight: bold;
+}
+
+tr td {
+    padding: 0.25em 0;
+}
