@@ -11,3 +11,11 @@
 .secondary-content-wrapper {
     margin-left: 0.25em;
 }
+
+.secondary-content-wrapper ::deep section {
+    margin-bottom: 0.75em;
+}
+
+.secondary-content-wrapper ::deep section:last-child {
+    margin: 0;
+}

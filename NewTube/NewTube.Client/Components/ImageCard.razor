@@ -1,0 +1,11 @@
+﻿<div class="image-card">
+    <div class="image-wrapper">
+        <img src="@imageSource" />
+    </div>
+    <div class="card-child-content">@ChildContent</div>
+</div>
+
+@code {
+    [Parameter] public string? imageSource { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}
