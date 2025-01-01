@@ -1,0 +1,10 @@
+﻿<ImageCard imageSource="@imageSource">
+    <a href="@anchor.Href">@anchor.Label</a>
+    <div class="card-child-content">@ChildContent</div>
+</ImageCard>
+
+@code {
+    [Parameter] public string? imageSource { get; set; } = null;
+    [Parameter] public Anchor anchor { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

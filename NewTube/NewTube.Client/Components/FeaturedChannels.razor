@@ -1,11 +1,12 @@
 ﻿<SecondarySection heading="Featured Channels">
     <div class="card-container">
-        <ImageCard imageSource="https://placehold.co/200">
-                <a href="/channel/my-cool-channel">My Cool Channel My Cool Channel My Cool Channel</a>
-                <div class="metadata-wrapper">
-                    <MetadataLine>300 subscribers</MetadataLine>
-                    <MetadataLine>20 videos</MetadataLine>
-                </div>
-        </ImageCard>
+        <ImageCardWithAnchor imageSource="https://placehold.co/200" anchor="@Anchor">
+            <MetadataLine>300 subscribers</MetadataLine>
+            <MetadataLine>20 videos</MetadataLine>
+        </ImageCardWithAnchor>
     </div>
 </SecondarySection>
+
+@code {
+    public Anchor Anchor = new Anchor("/channel/my-cool-channel", "My Cool Channel My Cool Channel My Cool Channel");
+}
