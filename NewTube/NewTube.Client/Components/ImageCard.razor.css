@@ -1,9 +1,4 @@
-﻿.image-card {
-    padding: 0.5em;
-    background: linear-gradient(-45deg, transparent 1em, white 0);
-}
-
-.image-wrapper {
+﻿.image-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
