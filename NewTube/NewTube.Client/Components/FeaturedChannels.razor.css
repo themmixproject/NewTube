@@ -9,11 +9,3 @@
 .channel-link {
     font-weight: bold;
 }
-
-.metadata-wrapper {
-   margin-top: 0.25em; 
-}
-
-::deep .image-card {
-    max-width: 10em;
-}
