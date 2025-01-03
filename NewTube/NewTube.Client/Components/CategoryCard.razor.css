@@ -1,0 +1,28 @@
+﻿.secondary-card {
+    background: linear-gradient(-45deg, transparent 1em, white 0);
+    padding: 0.5em;
+    display: flex;
+}
+
+.image-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+img {
+    width: 8em;
+}
+
+a {
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.card-child-content {
+    margin-left: 0.5em;
+}
+
+.category-metadata-wrapper {
+    margin-top: 0.35em;
+}
