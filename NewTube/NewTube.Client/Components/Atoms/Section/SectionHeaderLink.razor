@@ -1,7 +1,7 @@
-﻿<VerticalCenterWrapper>
+﻿<ColumnWrapper justifyContent="center">
     <a href="@anchor.Href">@anchor.Label</a>
-</VerticalCenterWrapper>
+</ColumnWrapper>
 
 @code {
-    [Parameter] public Anchor anchor { get; set; }
+    [Parameter] public required Anchor anchor { get; set; }
 }
