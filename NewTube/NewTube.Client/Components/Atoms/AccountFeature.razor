@@ -1,9 +1,10 @@
-﻿<div class="account-feature">
+﻿@inherits FragmentBase
+
+<div class="account-feature">
     <label>@label</label>
     @ChildContent
 </div>
 
 @code {
     [Parameter] public string? label { get; set; }
-    [Parameter] public RenderFragment? ChildContent { get; set; }
 }
