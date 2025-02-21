@@ -1,4 +1,6 @@
-﻿<SecondaryCard>
+﻿@inherits FragmentBase
+
+<SecondaryCard>
     <div class="image-wrapper">
         <img src="@imageSource" />
     </div>
@@ -7,5 +9,4 @@
 
 @code {
     [Parameter] public string? imageSource { get; set; }
-    [Parameter] public RenderFragment? ChildContent { get; set; }
 }

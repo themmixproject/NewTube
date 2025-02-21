@@ -1,4 +1,6 @@
-﻿<div class="main-wrapper">
+﻿@inherits FragmentBase
+
+<div class="main-wrapper">
     <div class="main">
         <PrimaryNav />
         <div class="row-wrapper">
@@ -6,7 +8,3 @@
         </div>
     </div>
 </div>
-
-@code {
-    [Parameter] public RenderFragment? ChildContent { get; set; } = null;
-}

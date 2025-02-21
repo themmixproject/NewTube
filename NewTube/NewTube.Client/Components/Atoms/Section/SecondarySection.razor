@@ -1,9 +1,10 @@
-﻿<section>
+﻿@inherits FragmentBase
+
+<section>
     <SecondarySectionHeader heading="@heading" />
     <div class="section-content">@ChildContent</div>
 </section>
 
 @code {
-    [Parameter] public RenderFragment? ChildContent { get; set; } = null;
     [Parameter] public string? heading { get; set; } = null;
 }
