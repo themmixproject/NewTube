@@ -1,10 +1,4 @@
-﻿.main-wrapper {
-    display: flex;
-    margin: 2em;
-    justify-content: center;
-}
-
-.main {
+﻿.main {
     display: flex;
     background-color: #ebebeb;
     padding: 0.75em;
