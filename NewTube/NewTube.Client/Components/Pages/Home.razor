@@ -1,14 +1,16 @@
 ﻿<MainContainer>
-    <div class="primary-content-wrapper">
-        <PrimarySection heading="new section" headerLink="@headerLink">
-            <VideoCard />
-        </PrimarySection>
-    </div>
-    <div class="secondary-content-wrapper">
-        <SideAccountPanel />
-        <FeaturedChannels />
-        <PopularCategories />
-    </div>
+    <RowWrapper>
+        <div class="primary-content-wrapper">
+            <PrimarySection heading="new section" headerLink="@headerLink">
+                <VideoCard />
+            </PrimarySection>
+        </div>
+        <div class="secondary-content-wrapper">
+            <SideAccountPanel />
+            <FeaturedChannels />
+            <PopularCategories />
+        </div>
+    </RowWrapper>
 </MainContainer>
 
 @code {

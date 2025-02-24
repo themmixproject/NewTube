@@ -1,11 +1,16 @@
-﻿input {
-    padding: 0.25em;
-    width: 100%;
-}
-
-tr td {
+﻿tr td {
     padding: 0.125em 0;
 }
 tr td:first-child {
     padding-right: 0.5em;
+}
+
+label {
+    font-weight: bold;
+    float: right;
+}
+
+input {
+    padding: 0.25em;
+    width: 100%;
 }
