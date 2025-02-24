@@ -1,0 +1,22 @@
+﻿form {
+    margin: 0.25em 0;
+}
+
+form * {
+    float: left;
+    display: block;
+    margin: 0 0.25em
+}
+
+button {
+    margin-right: 0;
+}
+
+input {
+    width: 20em;
+}
+
+label {
+    font-weight: bold;
+    margin-left: 0;
+}
