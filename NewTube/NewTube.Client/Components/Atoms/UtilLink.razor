@@ -1,0 +1,9 @@
+﻿@inherits FragmentBase
+
+<div class="util-link">
+    <a href="@href">@ChildContent</a>
+</div>
+
+@code {
+    [Parameter] public string? href { get; set; }
+}
