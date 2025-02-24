@@ -1,13 +1,17 @@
-﻿tr td {
+﻿td {
     padding: 0.125em 0;
 }
-tr td:first-child {
+td:first-child {
     padding-right: 0.5em;
+}
+td:last-child {
+    width: 100%;
 }
 
 label {
     font-weight: bold;
     float: right;
+    white-space: nowrap;
 }
 
 input {
