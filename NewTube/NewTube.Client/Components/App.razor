@@ -1,18 +1,3 @@
 ﻿@page "/"
 
-<MainContainer>
-    <div class="primary-content-wrapper">
-        <PrimarySection heading="new section" headerLink="@headerLink">
-            <VideoCard />
-        </PrimarySection>
-    </div>
-    <div class="secondary-content-wrapper">
-        <SideAccountPanel />
-        <FeaturedChannels />
-        <PopularCategories />
-    </div>
-</MainContainer>
-
-@code {
-    public Anchor headerLink = new Anchor("/featured", "see more");
-}
+<Home />
