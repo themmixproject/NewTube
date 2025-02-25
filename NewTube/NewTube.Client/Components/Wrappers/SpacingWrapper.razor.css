@@ -1,0 +1,11 @@
+﻿div {
+    margin: 0 .25em;
+}
+
+div:first-child {
+    margin-left: 0;
+}
+
+div:last-child {
+    margin-right: 0;
+}
