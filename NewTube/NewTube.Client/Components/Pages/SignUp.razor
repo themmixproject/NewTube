@@ -2,5 +2,24 @@
 
 <MainContainer>
     <h1>Join NewTube</h1>
-    <SignUpSection />
+    <RowWrapper>
+        <SpacingWrapper>
+            <SignUpSection />
+        </SpacingWrapper>
+        <SpacingWrapper>
+            <PrimarySection heading="Log In">
+                Already a member? Login here.
+                <TableWrapper>
+                    <LabeledInputTableRow label="User Name:" type="text" />
+                    <LabeledInputTableRow label="Password:" type="text" />
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Log In"/>
+                        </td>
+                    </tr>
+                </TableWrapper>
+            </PrimarySection>
+        </SpacingWrapper>
+    </RowWrapper>
 </MainContainer>
