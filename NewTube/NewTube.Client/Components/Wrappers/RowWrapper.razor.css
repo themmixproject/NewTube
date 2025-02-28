@@ -18,3 +18,18 @@ div[justify-content = "space-around"] {
 div[justify-content = "space-evenly"] {
     justify-content: space-evenly;
 }
+
+div ::deep > section,
+div ::deep > div {
+    margin: 0 0.25em;
+}
+
+div ::deep > section:first-child,
+div ::deep > div:first-child {
+    margin-left: 0;
+}
+
+div ::deep > section:last-child,
+div ::deep > div:last-child {
+    margin-right: 0;
+}
