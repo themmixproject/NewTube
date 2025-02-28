@@ -3,10 +3,8 @@
 <MainContainer>
     <h1>Join NewTube</h1>
     <RowWrapper>
-        <SpacingWrapper>
-            <SignUpSection />
-        </SpacingWrapper>
-        <SpacingWrapper>
+        <SignUpSection />
+        <ColumnWrapper>
             <PrimarySection heading="Log In">
                 Already a member? Login here.
                 <TableWrapper>
@@ -16,10 +14,12 @@
                         <td></td>
                         <td>
                             <input type="submit" value="Log In"/>
+                            <div></div>
                         </td>
                     </tr>
                 </TableWrapper>
             </PrimarySection>
-        </SpacingWrapper>
+            <WhatIsNewTube />
+        </ColumnWrapper>
     </RowWrapper>
 </MainContainer>
