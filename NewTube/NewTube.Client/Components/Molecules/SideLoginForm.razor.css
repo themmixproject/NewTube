@@ -5,20 +5,3 @@
 h3 {
     margin: 0.5em 0;
 }
-
-table {
-    width: 100%;
-}
-
-table tbody ::deep tr td:first-child{
-    width: 5.5em;
-}
-
-a {
-    float: right;
-    font-weight: bold;
-}
-
-tr td {
-    padding: 0.25em 0;
-}
