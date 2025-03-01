@@ -1,8 +1,6 @@
 ﻿<MainContainer>
     <RowWrapper>
-        <PrimarySection heading="new section" headerLink="@headerLink">
-            <VideoCard />
-        </PrimarySection>
+        <FeaturedVideosSection />
         <ColumnWrapper>
             <SideAccountSection />
             <FeaturedChannelsSection />
@@ -10,7 +8,3 @@
         </ColumnWrapper>
     </RowWrapper>
 </MainContainer>
-
-@code {
-    public Anchor headerLink = new Anchor("/featured", "see more");
-}
