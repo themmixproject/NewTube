@@ -1,0 +1,13 @@
+﻿@inherits FragmentBase
+
+<section>
+    <header>
+        <h2>@heading</h2>
+    </header>
+        @ChildContent
+</section>
+
+@code {
+    [Parameter]
+    public string heading { get; set; }
+}
