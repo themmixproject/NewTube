@@ -1,17 +1,10 @@
-﻿<TableWrapper>
+﻿@inherits FragmentBase
+
+<TableWrapper>
     <LabeledInputTableRow label="User Name:" type="text" placeholder="user name" />
     <LabeledInputTableRow label="Password:" type="password" placeholder="password" />
     <TableFormFooter>
         <input type="submit" value="Login" />
-    
-        @if (ShowSignUpLink)
-        {   
-            <a href="/signup">Sign Up</a>
-        }
+        @ChildContent
     </TableFormFooter>
 </TableWrapper>
-
-@code {
-    [Parameter]
-    public bool ShowSignUpLink { get; set; } = false;
-}
