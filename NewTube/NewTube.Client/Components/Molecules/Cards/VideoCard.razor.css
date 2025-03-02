@@ -1,21 +1,24 @@
 ﻿.video-card {
-    padding: 0.5em;
     background: linear-gradient(-45deg, transparent 1.25em, white 0);
+    padding-top: 0.5em;
+    padding-bottom: 0.25em;
+    padding-left: 0.75em;
+    padding-right: 1.25em;
     display: flex;
     flex-direction: row;
-    margin: 0.5em 0;
+    margin: 0.75em 0;
 }
 
-.video-metadata-wrapper {
-    margin-left: 0.5em;
+.video-metadata {
+    margin-left: 1em;
     font-size: 0.75em;
 }
 
-.video-metadata-wrapper h1 {
+.video-metadata h1 {
     margin: 0;
     font-size: 1.5em;
 }
 
-.video-metadata-wrapper p {
+.video-metadata p {
     margin: 0.25em 0;
 }
