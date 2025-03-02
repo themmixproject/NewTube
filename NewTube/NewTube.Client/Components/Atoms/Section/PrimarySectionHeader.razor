@@ -3,7 +3,9 @@
 
     @if (headerLink != null)
     {
-        <SectionHeaderLink anchor="@headerLink"/>
+        <ColumnWrapper justifyContent="center">
+            <a href="@headerLink.Href">@headerLink.Label</a>
+        </ColumnWrapper>
     }
 </header>
 
