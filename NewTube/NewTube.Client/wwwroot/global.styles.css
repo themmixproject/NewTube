@@ -1,1 +1,24 @@
-﻿
+﻿.primary-card {
+    background: linear-gradient(-45deg, transparent 1.25em, white 0);
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.75em;
+    padding-right: 1.25em;
+    height: fit-content;
+}
+
+.secondary-card {
+    background: linear-gradient(-45deg, transparent 1em, white 0);
+    padding: 0.5em;
+}
+
+.row,
+.col {
+    display: flex;
+}
+.row {
+    flex-direction: row;
+}
+.col {
+    flex-direction: column;
+}
