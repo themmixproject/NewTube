@@ -1,11 +1,11 @@
 ﻿@inherits FragmentBase
 
-<SecondaryCard>
+<div class="secondary-card">
     <div class="image-wrapper">
         <img src="@imageSource" />
     </div>
     <div class="card-child-content">@ChildContent</div>
-</SecondaryCard>
+</div>
 
 @code {
     [Parameter] public string? imageSource { get; set; }
