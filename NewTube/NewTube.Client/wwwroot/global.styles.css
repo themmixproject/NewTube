@@ -12,19 +12,6 @@
     padding: 0.5em;
 }
 
-
-/* TODO: replace the classes by using custom flex and justify-content attributes */
-.row,
-.column {
-    display: flex;
-}
-.row {
-    flex-direction: row;
-}
-.column {
-    flex-direction: column;
-}
-
 [flex="column"], [flex="row"] { display: flex; }
 [flex="column"] { flex-direction: column; }
 [flex="row"] { flex-direction: row; }
