@@ -1,0 +1,8 @@
+div {
+    display: flex;
+    flex-direction: row;
+}
+
+div ::deep > * { margin: 0 0.25em; }
+div ::deep > *:first-child { margin-left: 0 }
+div ::deep > *:last-child { margin-right: 0; }
