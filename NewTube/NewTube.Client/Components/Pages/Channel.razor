@@ -1,8 +1,8 @@
 ﻿@page "/channel"
 @layout MainLayout
 
-<div flex="row">
-    <div flex="column">
+<SpacedRow>
+    <SpacedColumn>
         <SecondarySection heading="<channel> Channel">
             <div class="secondary-card">
                 <BlankSection heading="hello world!">
@@ -18,8 +18,8 @@
             </div>
         </SecondarySection>
 
-    </div>
-    <div flex="column">
+    </SpacedColumn>
+    <SpacedColumn>
         <div class="primary-card">
             <h1>Video</h1>
         </div>
@@ -40,5 +40,5 @@
             <CommentCard />
             <CommentCard />
         </PrimarySection>
-    </div>
-</div>
+    </SpacedColumn>
+</SpacedRow>
