@@ -1,9 +1,6 @@
 ﻿@inherits FragmentBase
 
-<div class="labeled-content">
-    <label>@label</label>
-    @ChildContent
-</div>
+<div class="labeled-content"><label>@label</label>@ChildContent</div>
 
 @code {
     [Parameter] public string? label { get; set; } = null;
