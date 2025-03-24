@@ -1,4 +1,8 @@
-﻿.primary-card {
+﻿html, body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.primary-card {
     background: linear-gradient(-45deg, transparent 1.25em, white 0);
     padding-top: 0.5em;
     padding-bottom: 0.5em;
