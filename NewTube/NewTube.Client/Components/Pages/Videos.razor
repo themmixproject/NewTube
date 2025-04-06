@@ -1,0 +1,18 @@
+@page "/videos"
+@layout MainLayout
+
+<SpacedRow>
+    <SecondarySection heading="Browse Videos">
+        <div class="secondary-card">
+            <BlankSection heading="Time">
+                <div><a href="/">Today</a></div>
+                <div><a href="/">This Week</a></div>
+                <div><a href="/">This Month</a></div>
+                <div><a href="/">All Time</a></div>
+            </BlankSection>
+        </div>
+    </SecondarySection>
+    <PrimarySection heading="Most Viewed (Today)">
+        <VideoCard />
+    </PrimarySection>
+</SpacedRow>
