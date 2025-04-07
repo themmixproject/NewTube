@@ -1,10 +1,14 @@
 ﻿@inherits FragmentBase
 
 <TableWrapper>
-    <LabeledInputTableRow label="User Name:" type="text" placeholder="user name" />
+    <LabeledInputTableRow label="User Name:" type="text" placeholder="user name" @bind-value="@UserName" />
     <LabeledInputTableRow label="Password:" type="password" placeholder="password" />
     <TableFormFooter>
         <input type="submit" value="Login" />
         @ChildContent
     </TableFormFooter>
 </TableWrapper>
+
+@code {
+    public string UserName { get; set; }
+}
