@@ -13,7 +13,7 @@
         placeholder="password"
         @bind-value="@Password" />
     <TableFormFooter>
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login" @onclick:preventDefault/>
         @if (displaySignUpLink){
             <a href="/signup">Sign Up</a>
         }
