@@ -6,14 +6,14 @@
         label="User Name:"
         type="text"
         placeholder="user name"
-        @bind-value="@Username" />
+        @bind-value="@loginRequest.Username" />
     <LabeledInputTableRow
         label="Password:"
         type="password"
         placeholder="password"
-        @bind-value="@Password" />
+        @bind-value="@loginRequest.Password" />
     <TableFormFooter>
-        <input type="submit" value="Login" @onclick:preventDefault/>
+        <input type="submit" value="Login" />
         @if (displaySignUpLink){
             <a href="/signup">Sign Up</a>
         }
@@ -22,7 +22,5 @@
 
 @code {
     [Parameter] public bool displaySignUpLink { get; set; }
-    
-    private string Username { get; set; }
-    private string Password { get; set; }
+    private LoginRequest loginRequest { get; set; } = new();
 }
