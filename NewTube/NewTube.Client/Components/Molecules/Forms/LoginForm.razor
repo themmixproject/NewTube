@@ -2,8 +2,16 @@
 @rendermode InteractiveAuto
 
 <TableWrapper>
-    <LabeledInputTableRow label="User Name:" type="text" placeholder="user name" @bind-value="@UserName" />
-    <LabeledInputTableRow label="Password:" type="password" placeholder="password" />
+    <LabeledInputTableRow
+        label="User Name:"
+        type="text"
+        placeholder="user name"
+        @bind-value="@Username" />
+    <LabeledInputTableRow
+        label="Password:"
+        type="password"
+        placeholder="password"
+        @bind-value="@Password" />
     <TableFormFooter>
         <input type="submit" value="Login" />
         @if (displaySignUpLink){
@@ -15,5 +23,6 @@
 @code {
     [Parameter] public bool displaySignUpLink { get; set; }
     
-    public string UserName { get; set; }
+    private string Username { get; set; }
+    private string Password { get; set; }
 }
