@@ -6,10 +6,14 @@
     <LabeledInputTableRow label="Password:" type="password" placeholder="password" />
     <TableFormFooter>
         <input type="submit" value="Login" />
-        @ChildContent
+        @if (displaySignUpLink){
+            <a href="/signup">Sign Up</a>
+        }
     </TableFormFooter>
 </TableWrapper>
 
 @code {
+    [Parameter] public bool displaySignUpLink { get; set; }
+    
     public string UserName { get; set; }
 }
