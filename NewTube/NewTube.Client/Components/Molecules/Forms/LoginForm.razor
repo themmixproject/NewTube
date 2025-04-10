@@ -1,19 +1,21 @@
 ﻿@inherits FragmentBase
 @rendermode InteractiveAuto
 
+@inject AuthClient authClient
+
 <TableWrapper>
     <LabeledInputTableRow
-        label="User Name:"
-        type="text"
-        placeholder="user name"
-        @bind-value="@loginRequest.Username" />
+    label="User Name:"
+    type="text"
+    placeholder="user name"
+    @bind-value="@loginRequest.Username" />
     <LabeledInputTableRow
-        label="Password:"
-        type="password"
-        placeholder="password"
-        @bind-value="@loginRequest.Password" />
+    label="Password:"
+    type="password"
+    placeholder="password"
+    @bind-value="@loginRequest.Password" />
     <TableFormFooter>
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login" @onclick="@test" @onclick:preventDefault/>
         @if (displaySignUpLink){
             <a href="/signup">Sign Up</a>
         }
@@ -23,4 +25,9 @@
 @code {
     [Parameter] public bool displaySignUpLink { get; set; }
     private LoginRequest loginRequest { get; set; } = new();
+
+    public void test()
+    {
+        authClient.test();
+    }
 }
