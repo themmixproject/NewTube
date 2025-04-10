@@ -2,12 +2,17 @@
 {
     public class AuthClient
     {
-        private string baseUrl = "auth/";
-        private HttpClient httpClient;
+        private readonly string _baseUrl = "auth/";
+        private readonly HttpClient _httpClient;
         
         public AuthClient(HttpClient httpClient)
         {
-            this.httpClient = httpClient;
+            _httpClient = httpClient;
+        }
+
+        public void test()
+        {
+            _httpClient.GetAsync($"{_baseUrl}/test");
         }
     }
 }
