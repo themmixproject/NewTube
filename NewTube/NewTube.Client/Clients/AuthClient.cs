@@ -12,7 +12,7 @@
 
         public void test()
         {
-            _httpClient.GetAsync($"{_baseUrl}/test");
+            _httpClient.GetAsync($"{_baseUrl}test");
         }
     }
 }
