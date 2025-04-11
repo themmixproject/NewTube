@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NewTube.Shared.Interfaces
 {
-    internal class IAuthService
+    public interface IAuthService
     {
         public void RequestLogin(LoginRequest loginRequest);
     }
