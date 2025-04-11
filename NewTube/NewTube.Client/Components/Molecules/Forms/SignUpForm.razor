@@ -1,4 +1,5 @@
 ﻿@rendermode InteractiveAuto
+@inject IAuthService authService
 
 <TableWrapper>
     <LabeledInputTableRow label="Email Address:" type="email" @bind-value="@signUpRequest.Email" />
@@ -15,8 +16,8 @@
 @code {
     private SignUpRequest signUpRequest { get; set; } = new();
 
-    private void requestSignUp()
+    private async Task requestSignUp()
     {
-        Console.WriteLine(signUpRequest);
+        await authService.RequestSignUpAsync(signUpRequest);
     }
 }
