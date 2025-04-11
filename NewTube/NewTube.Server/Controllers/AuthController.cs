@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace NewTube.Server.Controllers
 {
@@ -8,8 +9,9 @@ namespace NewTube.Server.Controllers
         public AuthController() { }
 
         [HttpPost("login")]
-        public string LoginUser()
+        public string LoginUser([FromBody] LoginRequest loginRequest)
         {
+            Console.WriteLine(loginRequest);
             return "User has been logged in!";
         }
     }

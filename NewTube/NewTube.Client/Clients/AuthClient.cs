@@ -1,4 +1,6 @@
-﻿namespace NewTube.Client.Clients
+﻿using NewTube.Shared.DataTransfer;
+
+namespace NewTube.Client.Clients
 {
     public class AuthClient
     {
@@ -10,9 +12,9 @@
             _httpClient = httpClient;
         }
 
-        public void RequestLogin()
+        public void RequestLogin(LoginRequest loginRequest)
         {
-            _httpClient.PostAsync($"{_baseUrl}login", null);
+            _httpClient.PostAsJsonAsync($"{_baseUrl}login", loginRequest);
         }
     }
 }
