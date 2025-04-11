@@ -19,5 +19,11 @@ namespace NewTube.Server.Controllers
         {
             return await AuthService.RequestLoginAsync(loginRequest);
         }
+
+        [HttpPost("signup")]
+        public async Task<SignUpResponse> SignUpUser([FromBody] SignUpRequest signUpRequest)
+        {
+            return await AuthService.RequestSignUpAsync(signUpRequest);
+        }
     }
 }
