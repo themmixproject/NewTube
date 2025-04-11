@@ -15,10 +15,9 @@ namespace NewTube.Server.Controllers
         }
 
         [HttpPost("login")]
-        public string LoginUser([FromBody] LoginRequest loginRequest)
+        public async Task<LoginResponse> LoginUser([FromBody] LoginRequest loginRequest)
         {
-            AuthService.RequestLogin(loginRequest);
-            return "User has been logged in!";
+            return await AuthService.RequestLoginAsync(loginRequest);
         }
     }
 }

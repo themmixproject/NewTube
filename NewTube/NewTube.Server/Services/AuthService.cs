@@ -14,14 +14,21 @@ namespace NewTube.Server.Services
             SignInManager = signInManager;
         }
 
-        public void RequestLogin(LoginRequest loginRequest)
+        public async Task<LoginResponse> RequestLoginAsync(LoginRequest loginRequest)
         {
-            SignInManager.PasswordSignInAsync(
+            var result = await SignInManager.PasswordSignInAsync(
                 loginRequest.Username,
                 loginRequest.Password,
                 isPersistent: false,
                 lockoutOnFailure: false
-            ).Wait();
+            );
+
+            LoginResponse response = new LoginResponse();
+            if (result.Succeeded) {
+                response.IsSuccessful = true;
+            }
+
+            return response;
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Net.Http.Json;
-
+using System.Text.Json;
 using NewTube.Shared.DataTransfer;
 using NewTube.Shared.Interfaces;
 
@@ -15,9 +15,11 @@ namespace NewTube.Client.Clients
             _httpClient = httpClient;
         }
 
-        public void RequestLogin(LoginRequest loginRequest)
+        public async Task<LoginResponse> RequestLoginAsync(LoginRequest loginRequest)
         {
-            _httpClient.PostAsJsonAsync($"{_baseUrl}login", loginRequest);
+            var result = await _httpClient.PostAsJsonAsync($"{_baseUrl}login", loginRequest);
+            var contentString = await result.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<LoginResponse>(contentString)!;
         }
     }
 }
