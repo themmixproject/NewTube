@@ -1,11 +1,22 @@
-﻿<TableWrapper>
-    <LabeledInputTableRow label="Email Address:" type="email"/>
-    <LabeledInputTableRow label="User Name:" type="text" />
-    <LabeledInputTableRow label="Password:" type="password" />
+﻿@rendermode InteractiveAuto
+
+<TableWrapper>
+    <LabeledInputTableRow label="Email Address:" type="email" @bind-value="@signUpRequest.Email" />
+    <LabeledInputTableRow label="User Name:" type="text" @bind-value="@signUpRequest.Username" />
+    <LabeledInputTableRow label="Password:" type="password" @bind-value="@signUpRequest.Password" />
     <LabeledInputTableRow label="Confirm Password:" type="password" />
     <TableFormFooter>
         - I certify I am over 13 years old
         <br />
-        <input type="submit" value="Sign Up" />
+        <input type="submit" value="Sign Up" @onclick="@requestSignUp" @onclick:preventDefault />
     </TableFormFooter>
 </TableWrapper>
+
+@code {
+    private SignUpRequest signUpRequest { get; set; } = new();
+
+    private void requestSignUp()
+    {
+        Console.WriteLine(signUpRequest);
+    }
+}
