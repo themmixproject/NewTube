@@ -7,10 +7,10 @@ namespace NewTube.Server.Controllers
     {
         public AuthController() { }
 
-        [HttpGet("test")]
-        public string Test()
+        [HttpPost("login")]
+        public string LoginUser()
         {
-            return "Hello World!";
+            return "User has been logged in!";
         }
     }
 }
