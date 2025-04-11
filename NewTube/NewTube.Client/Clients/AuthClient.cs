@@ -10,9 +10,9 @@
             _httpClient = httpClient;
         }
 
-        public void test()
+        public void RequestLogin()
         {
-            _httpClient.GetAsync($"{_baseUrl}test");
+            _httpClient.PostAsync($"{_baseUrl}login", null);
         }
     }
 }
