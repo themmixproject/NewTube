@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using NewTube.Client;
 using NewTube.Client.Clients;
+using NewTube.Shared.Interfaces;
 
 namespace NewTube.Client
 {
@@ -18,7 +18,7 @@ namespace NewTube.Client
             {
                 BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
             });
-            builder.Services.AddScoped<AuthClient>();
+            builder.Services.AddScoped<IAuthService, AuthClient>();
 
             await builder.Build().RunAsync();
         }
