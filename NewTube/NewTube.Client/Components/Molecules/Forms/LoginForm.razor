@@ -1,6 +1,6 @@
 ﻿@inherits FragmentBase
 @rendermode InteractiveAuto
-@inject AuthClient authClient
+@inject IAuthService authClient
 
 <TableWrapper>
     <LabeledInputTableRow
@@ -25,8 +25,9 @@
     [Parameter] public bool displaySignUpLink { get; set; }
     private LoginRequest loginRequest { get; set; } = new();
 
-    public void requestLogin()
+    public async void requestLogin()
     {
-        authClient.RequestLogin(loginRequest);
+        var response = await authClient.RequestLoginAsync(loginRequest);
+        Console.WriteLine(response);
     }
 }
