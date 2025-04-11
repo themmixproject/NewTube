@@ -15,7 +15,7 @@
     placeholder="password"
     @bind-value="@loginRequest.Password" />
     <TableFormFooter>
-        <input type="submit" value="Login" @onclick="@test" @onclick:preventDefault/>
+        <input type="submit" value="Login" @onclick="@requestLogin" @onclick:preventDefault/>
         @if (displaySignUpLink){
             <a href="/signup">Sign Up</a>
         }
@@ -26,8 +26,8 @@
     [Parameter] public bool displaySignUpLink { get; set; }
     private LoginRequest loginRequest { get; set; } = new();
 
-    public void test()
+    public void requestLogin()
     {
-        authClient.test();
+        authClient.RequestLogin();
     }
 }
