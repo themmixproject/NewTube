@@ -7,7 +7,7 @@ namespace NewTube.Server.Controllers
     [Route("[controller]")]
     public class AuthController
     {
-        private IAuthService AuthService
+        private IAuthService AuthService;
 
         public AuthController(IAuthService authService)
         {

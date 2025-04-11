@@ -5,6 +5,7 @@ using Microsoft.Extensions.FileProviders;
 using NewTube.Server.Components;
 using NewTube.Server.Components.Account;
 using NewTube.Server.Data;
+using NewTube.Server.Services;
 using NewTube.Shared.Interfaces;
 
 namespace NewTube.Server
@@ -24,7 +25,7 @@ namespace NewTube.Server
             builder.Services.AddScoped<IdentityUserAccessor>();
             builder.Services.AddScoped<IdentityRedirectManager>();
             builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
-            builder.Services.AddScoped<IAuthService, IAuthService>();
+            builder.Services.AddScoped<IAuthService, AuthService>();
 
             builder.Services.AddAuthentication(options =>
                 {
