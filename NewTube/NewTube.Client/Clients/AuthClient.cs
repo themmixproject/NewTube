@@ -21,5 +21,12 @@ namespace NewTube.Client.Clients
             var contentString = await result.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<LoginResponse>(contentString)!;
         }
+
+        public async Task<SignUpResponse> RequestSignUpAsync(SignUpRequest signUpRequest)
+        {
+            var result = await _httpClient.PostAsJsonAsync($"{_baseUrl}/signup", signUpRequest);
+            var contentString = await result.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<SignUpResponse>(contentString)!;
+        } 
     }
 }
