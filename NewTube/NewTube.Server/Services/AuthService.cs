@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using NewTube.Server.Data;
 using NewTube.Shared.DataTransfer;
+using NewTube.Shared.Interfaces;
 
 namespace NewTube.Server.Services
 {
-    public class AuthService
+    public class AuthService : IAuthService
     {
         private readonly SignInManager<ApplicationUser> SignInManager;
 

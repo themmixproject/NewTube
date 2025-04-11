@@ -1,9 +1,11 @@
-﻿using NewTube.Shared.DataTransfer;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
+
+using NewTube.Shared.DataTransfer;
+using NewTube.Shared.Interfaces;
 
 namespace NewTube.Client.Clients
 {
-    public class AuthClient
+    public class AuthClient : IAuthService
     {
         private readonly string _baseUrl = "auth/";
         private readonly HttpClient _httpClient;
