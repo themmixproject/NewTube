@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using NewTube.Server.Data;
 using NewTube.Shared.DataTransfer;
 using NewTube.Shared.Interfaces;
