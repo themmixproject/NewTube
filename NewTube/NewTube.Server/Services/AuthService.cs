@@ -42,7 +42,7 @@ namespace NewTube.Server.Services
         public async Task<SignUpResponse> RequestSignUpAsync(SignUpRequest request)
         {
             ApplicationUser user = new ApplicationUser();
-            await UserStore.SetUserNameAsync(user, request.Email, CancellationToken.None);
+            await UserStore.SetUserNameAsync(user, request.Username, CancellationToken.None);
 
             IUserEmailStore<ApplicationUser> emailStore = GetEmailStore();
             await emailStore.SetEmailAsync(user, request.Email, CancellationToken.None);
