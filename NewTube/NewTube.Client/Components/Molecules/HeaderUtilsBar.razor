@@ -1,16 +1,14 @@
-﻿<div>
-    <AuthorizeView>
-        <NotAuthorized>
-            <UtilLink href="/signup">Sign Up</UtilLink>
-        </NotAuthorized>
-    </AuthorizeView>
-    <UtilLink href="/account">My Account</UtilLink>
-    <UtilLink href="/history">Viewing History</UtilLink>
+﻿@inject IAuthService authService
+
+<div>
     <AuthorizeView>
         <Authorized>
+            <UtilLink href="/account">My Account</UtilLink>
+            <UtilLink href="/history">Viewing History</UtilLink>
             <UtilLink href="/logout">LogOut</UtilLink>
         </Authorized>
         <NotAuthorized>
+            <UtilLink href="/signup">Sign Up</UtilLink>
             <UtilLink href="/login">Log In</UtilLink>
         </NotAuthorized>
     </AuthorizeView>
