@@ -42,7 +42,7 @@ namespace NewTube.Server
             builder.Services.AddIdentityCore<ApplicationUser>(options => {
                 options.SignIn.RequireConfirmedAccount = true;
                 options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 5;
+                options.Password.RequiredLength = 1;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
