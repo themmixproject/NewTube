@@ -4,7 +4,11 @@
 <SpacedRow>
     <FeaturedVideosSection />
     <SpacedColumn>
-        <SideAccountSection />
+        <AuthorizeView>
+            <NotAuthorized>
+                <SideAccountSection />
+            </NotAuthorized>
+        </AuthorizeView>
         <FeaturedChannelsSection />
         <PopularCategoriesSection />
     </SpacedColumn>
