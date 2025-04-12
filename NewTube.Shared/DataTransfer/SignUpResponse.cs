@@ -8,6 +8,7 @@ namespace NewTube.Shared.DataTransfer
 {
     public class SignUpResponse
     {
+        public SignUpResponse() { }
         public bool IsSuccessful { get; set; }
     }
 }
