@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NewTube.Shared.DataTransfer;
 using NewTube.Shared.Interfaces;
 
@@ -21,9 +22,9 @@ namespace NewTube.Server.Controllers
         }
 
         [HttpGet("logout")]
-        public async Task LogoutUser()
+        public async Task<LogoutResponse> LogoutUser()
         {
-            return AuthService.RequestLogout();
+            return await AuthService.RequestLogoutAsync();
         }
 
         [HttpPost("signup")]
