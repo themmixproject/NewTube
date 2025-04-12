@@ -1,8 +1,6 @@
 ﻿@inherits FragmentBase
 
-<div class="util-link">
-    <a href="@href">@ChildContent</a>
-</div>
+<a href="@href" @onclick="@onclick">@ChildContent</a>
 
 @code {
     [Parameter] public string? href { get; set; }
