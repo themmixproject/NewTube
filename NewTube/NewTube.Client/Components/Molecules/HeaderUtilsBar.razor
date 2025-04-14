@@ -1,15 +1,27 @@
-﻿@inject IAuthService authService
+﻿@rendermode InteractiveAuto
+
+@inject IAuthService authService
+@inject NavigationManager navigationManager
+
 
 <div>
     <AuthorizeView>
         <Authorized>
-            <UtilLink href="/account">My Account</UtilLink>
-            <UtilLink href="/history">Viewing History</UtilLink>
-            <UtilLink href="/logout">LogOut</UtilLink>
+            <a href="/account">My Account</a>
+            <a href="/history">Viewing History</a>
+            <span @onclick="@requestLogout">Log Out</span>
         </Authorized>
         <NotAuthorized>
-            <UtilLink href="/signup">Sign Up</UtilLink>
-            <UtilLink href="/login">Log In</UtilLink>
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Log In</a>
         </NotAuthorized>
     </AuthorizeView>
 </div>
+
+@code {
+    public async Task requestLogout()
+    {
+        Console.WriteLine("request log out");
+        await this.authService.RequestLogoutAsync();
+    }
+}

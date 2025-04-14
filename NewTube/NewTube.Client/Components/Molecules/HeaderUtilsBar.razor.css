@@ -1,7 +1,25 @@
 ﻿div {
-    margin: 0.25em 0;
-}
-
-div {
     text-align: right;
 }
+a, span {
+    display: inline-block;
+    margin: 0 0.125em;
+}
+
+    a:first-child, span:first-child {
+        margin-left: 0;
+    }
+
+    a:last-child, span:last-child {
+        margin-right: 0;
+    }
+
+span {
+    text-decoration: underline;
+    color: #0000EE;
+    cursor: pointer;
+}
+
+    span:active, span:visited:active {
+        color: #FF0000;
+    }
