@@ -1,8 +1,22 @@
-﻿a {
+﻿div {
+    text-align: right;
+}
+
+a {
     display: inline-block;
     margin: 0.25em 0;
 }
 
-div {
-    text-align: right;
+span {
+    color: #0000EE;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+span:visited {
+    color: #551A8B;
+}
+
+span:active {
+    color: #FF0000;
 }
