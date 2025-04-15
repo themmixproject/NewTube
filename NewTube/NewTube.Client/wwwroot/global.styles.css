@@ -16,6 +16,18 @@
     padding: 0.5em;
 }
 
+:link {
+    color: #0000EE;
+}
+
+:visited {
+    color: #551A8B;
+}
+
+:link:active, :visited:active {
+    color: #FF0000;
+}
+
 [flex="column"], [flex="row"] { display: flex; }
 [flex="column"] { flex-direction: column; }
 [flex="row"] { flex-direction: row; }
