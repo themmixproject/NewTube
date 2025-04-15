@@ -1,17 +1,13 @@
 ﻿<div>
     <AuthorizeView>
-        <NotAuthorized>
-            <UtilLink href="/signup">Sign Up</UtilLink>
-        </NotAuthorized>
-    </AuthorizeView>
-    <UtilLink href="/account">My Account</UtilLink>
-    <UtilLink href="/history">Viewing History</UtilLink>
-    <AuthorizeView>
         <Authorized>
-            <UtilLink href="/logout">LogOut</UtilLink>
+            <a href="/account">My Acccount</a>
+            <a href="/history">Viewing History</a>
+            <a href="/logout">Log Out</a>
         </Authorized>
         <NotAuthorized>
-            <UtilLink href="/login">Log In</UtilLink>
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Log In</a>
         </NotAuthorized>
     </AuthorizeView>
 </div>
