@@ -18,7 +18,7 @@ namespace NewTube.Client
             {
                 BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
             });
-            builder.Services.AddScoped<IAuthService, AuthClient>();
+            builder.Services.AddScoped<AuthClient>();
 
             await builder.Build().RunAsync();
         }

@@ -5,7 +5,7 @@ using NewTube.Shared.Interfaces;
 
 namespace NewTube.Client.Clients
 {
-    public class AuthClient : IAuthService
+    public class AuthClient
     {
         private readonly string _endPoint = "auth";
         private readonly HttpClient _httpClient;
