@@ -83,6 +83,45 @@ namespace NewTube.Client
                 Succeeded = false,
                 ErrorList = defaultDetail
             };
-         } 
+        }
+
+        /// <summary>
+        /// User login.
+        /// </summary>
+        /// <param name="email">Hte user's email address.</param>
+        /// <param name="password">The user's password.</param>
+        /// <returns>The result of the login request serialized to a <see cref="FormResult"/></returns>
+        public async Task<FormResult> LoginAsync(string email, string password)
+        {
+            try
+            {
+                // login with cookies
+                var result = await HttpClient.PostAsJsonAsync(
+                    "login?useCookies=true",
+                    new { email, password }
+                );
+
+                if (result.IsSuccessStatusCode)
+                {
+                    // need to refresh auth state
+                    NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+
+                    return new FormResult { Succeeded = true };
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "App error");
+            }
+
+            // unknown error
+            return new FormResult
+            {
+                Succeeded = false,
+                ErrorList = ["Invalid email and/or password."]
+            };
+        }
     }
 }
