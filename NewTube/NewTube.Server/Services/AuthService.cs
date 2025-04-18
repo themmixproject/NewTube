@@ -5,7 +5,7 @@ using NewTube.Shared.Interfaces;
 
 namespace NewTube.Server.Services
 {
-    public class AuthService : IAuthService
+    public class AuthService
     {
         private readonly SignInManager<ApplicationUser> SignInManager;
         private readonly IUserStore<ApplicationUser> UserStore;
@@ -22,55 +22,55 @@ namespace NewTube.Server.Services
             UserManager = userManager;
         }
 
-        public async Task<LoginResponse> RequestLoginAsync(LoginRequest loginRequest)
-        {
-            SignInResult result = await SignInManager.PasswordSignInAsync(
-                loginRequest.Username,
-                loginRequest.Password,
-                isPersistent: false,
-                lockoutOnFailure: false
-            );
+        //public async Task<LoginResponse> RequestLoginAsync(LoginRequest loginRequest)
+        //{
+        //    SignInResult result = await SignInManager.PasswordSignInAsync(
+        //        loginRequest.Username,
+        //        loginRequest.Password,
+        //        isPersistent: false,
+        //        lockoutOnFailure: false
+        //    );
 
-            LoginResponse response = new LoginResponse();
-            if (result.Succeeded) {
-                response.IsSuccessful = true;
-            }
+        //    LoginResponse response = new LoginResponse();
+        //    if (result.Succeeded) {
+        //        response.IsSuccessful = true;
+        //    }
 
-            return response;
-        }
+        //    return response;
+        //}
 
-        public async Task<LogoutResponse> RequestLogoutAsync()
-        {
-            await SignInManager.SignOutAsync();
-            return new LogoutResponse { IsSuccessful = true };
-        }
+        //public async Task<LogoutResponse> RequestLogoutAsync()
+        //{
+        //    await SignInManager.SignOutAsync();
+        //    return new LogoutResponse { IsSuccessful = true };
+        //}
 
-        public async Task<SignUpResponse> RequestSignUpAsync(SignUpRequest request)
-        {
-            ApplicationUser user = new ApplicationUser();
-            await UserStore.SetUserNameAsync(user, request.Username, CancellationToken.None);
+        //public async Task<SignUpResponse> RequestSignUpAsync(SignUpRequest request)
+        //{
+        //    ApplicationUser user = new ApplicationUser();
+        //    await UserStore.SetUserNameAsync(user, request.Username, CancellationToken.None);
 
-            IUserEmailStore<ApplicationUser> emailStore = GetEmailStore();
-            await emailStore.SetEmailAsync(user, request.Email, CancellationToken.None);
+        //    IUserEmailStore<ApplicationUser> emailStore = GetEmailStore();
+        //    await emailStore.SetEmailAsync(user, request.Email, CancellationToken.None);
 
-            IdentityResult result = await UserManager.CreateAsync(user, request.Password);
+        //    IdentityResult result = await UserManager.CreateAsync(user, request.Password);
 
-            SignUpResponse response = new SignUpResponse();
-            if (result.Succeeded)
-            {
-                response.IsSuccessful = true;
-            }
+        //    SignUpResponse response = new SignUpResponse();
+        //    if (result.Succeeded)
+        //    {
+        //        response.IsSuccessful = true;
+        //    }
 
-            return response;
-        }
+        //    return response;
+        //}
 
-        private IUserEmailStore<ApplicationUser> GetEmailStore()
-        {
-            if (!UserManager.SupportsUserEmail)
-            {
-                throw new NotSupportedException("The default UI requires a user store with email support.");
-            }
-            return (IUserEmailStore<ApplicationUser>)UserStore;
-        }
+        //private IUserEmailStore<ApplicationUser> GetEmailStore()
+        //{
+        //    if (!UserManager.SupportsUserEmail)
+        //    {
+        //        throw new NotSupportedException("The default UI requires a user store with email support.");
+        //    }
+        //    return (IUserEmailStore<ApplicationUser>)UserStore;
+        //}
     }
 }

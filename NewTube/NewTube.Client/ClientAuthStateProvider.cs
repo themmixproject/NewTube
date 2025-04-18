@@ -118,8 +118,6 @@ namespace NewTube.Client
 
                     return new FormResult { Succeeded = true };
                 }
-
-
             }
             catch (Exception ex)
             {
