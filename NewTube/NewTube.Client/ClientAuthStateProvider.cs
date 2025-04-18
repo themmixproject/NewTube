@@ -4,6 +4,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Components.Authorization;
 using NewTube.Client.Clients;
 using NewTube.Client.Models;
+using System.Text;
 
 namespace NewTube.Client
 {
@@ -214,6 +215,14 @@ namespace NewTube.Client
 
             // return the state
             return new AuthenticationState(user);
+        }
+
+        public async Task LogoutAsync()
+        {
+            var emptyContent = new StringContent("{}", Encoding.UTF8, "application/json");
+            await HttpClient.PostAsync("logout", emptyContent);
+
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
         }
     }
 }
