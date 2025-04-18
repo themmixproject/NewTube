@@ -1,8 +1,6 @@
 ﻿@rendermode InteractiveAuto
 
-@inject IAuthService authService
 @inject NavigationManager navigationManager
-
 
 <div>
     <AuthorizeView>
@@ -19,9 +17,8 @@
 </div>
 
 @code {
-    public async Task requestLogout()
+    public void requestLogout()
     {
         Console.WriteLine("request log out");
-        await this.authService.RequestLogoutAsync();
     }
 }
