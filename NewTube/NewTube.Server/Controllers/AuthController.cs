@@ -1,36 +1,39 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http.HttpResults;
 using NewTube.Shared.DataTransfer;
 using NewTube.Shared.Interfaces;
+using NewTube.Server.Services;
 
 namespace NewTube.Server.Controllers
 {
     [Route("[controller]")]
     public class AuthController
     {
-        private IAuthService AuthService;
-
-        public AuthController(IAuthService authService)
-        {
-            AuthService = authService;
-        }
+        public AuthController() { }
 
         [HttpPost("login")]
-        public async Task<LoginResponse> LoginUser([FromBody] LoginRequest loginRequest)
+        public IResult LoginUser([FromBody] LoginRequest loginRequest)
         {
-            return await AuthService.RequestLoginAsync(loginRequest);
+            return Results.Ok("ok");
         }
 
-        [HttpGet("logout")]
-        public async Task<LogoutResponse> LogoutUser()
-        {
-            return await AuthService.RequestLogoutAsync();
-        }
+        //[HttpPost("login")]
+        //public async Task<LoginResponse> LoginUser([FromBody] LoginRequest loginRequest)
+        //{
+        //    return await AuthService.RequestLoginAsync(loginRequest);
+        //}
 
-        [HttpPost("signup")]
-        public async Task<SignUpResponse> SignUpUser([FromBody] SignUpRequest signUpRequest)
-        {
-            return await AuthService.RequestSignUpAsync(signUpRequest);
-        }
+        //[HttpGet("logout")]
+        //public async Task<LogoutResponse> LogoutUser()
+        //{
+        //    return await AuthService.RequestLogoutAsync();
+        //}
+
+        //[HttpPost("signup")]
+        //public async Task<SignUpResponse> SignUpUser([FromBody] SignUpRequest signUpRequest)
+        //{
+        //    return await AuthService.RequestSignUpAsync(signUpRequest);
+        //}
     }
 }
