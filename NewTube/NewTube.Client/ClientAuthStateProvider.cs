@@ -22,6 +22,12 @@ namespace NewTube.Client
         private bool IsAuthenticated { get; set; } = false;
         private readonly ClaimsPrincipal Unauthenticated = new(new ClaimsIdentity());
 
+        /// <summary>
+        /// Register a new user
+        /// </summary>
+        /// <param name="username">The user's email address.</param>
+        /// <param name="password">The user's password.</param>
+        /// <returns>The result serialized to a <see cref="FormResult"/></returns>
         public async Task<FormResult> RegisterAsync(string username, string password)
         {
             string[] defaultDetail = ["An unknown error prevented registration from succeeding."];
