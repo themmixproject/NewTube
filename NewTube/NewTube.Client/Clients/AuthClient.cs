@@ -15,24 +15,30 @@ namespace NewTube.Client.Clients
             _httpClient = httpClient;
         }
 
-        public async Task<LoginResponse> RequestLoginAsync(LoginRequest loginRequest)
+        public async Task RequestLoginAsync(LoginRequest loginRequest)
         {
-            var result = await _httpClient.PostAsJsonAsync($"{_endPoint}/login", loginRequest);
-            var contentString = await result.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<LoginResponse>(contentString)!;
-        }
-        public async Task<LogoutResponse> RequestLogoutAsync()
-        {
-            var result = await _httpClient.GetAsync($"{_endPoint}/logout");
-            var contentString = await result.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<LogoutResponse>(contentString)!;
+            await _httpClient.PostAsJsonAsync($"{_endPoint}/login", loginRequest);
         }
 
-        public async Task<SignUpResponse> RequestSignUpAsync(SignUpRequest signUpRequest)
-        {
-            var result = await _httpClient.PostAsJsonAsync($"{_endPoint}/signup", signUpRequest);
-            var contentString = await result.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<SignUpResponse>(contentString)!;
-        }
+        //public async Task<LoginResponse> RequestLoginAsync(LoginRequest loginRequest)
+        //{
+        //    var result = await _httpClient.PostAsJsonAsync($"{_endPoint}/login", loginRequest);
+        //    var contentString = await result.Content.ReadAsStringAsync();
+        //    return JsonSerializer.Deserialize<LoginResponse>(contentString)!;
+        //}
+
+        //public async Task<LogoutResponse> RequestLogoutAsync()
+        //{
+        //    var result = await _httpClient.GetAsync($"{_endPoint}/logout");
+        //    var contentString = await result.Content.ReadAsStringAsync();
+        //    return JsonSerializer.Deserialize<LogoutResponse>(contentString)!;
+        //}
+
+        //public async Task<SignUpResponse> RequestSignUpAsync(SignUpRequest signUpRequest)
+        //{
+        //    var result = await _httpClient.PostAsJsonAsync($"{_endPoint}/signup", signUpRequest);
+        //    var contentString = await result.Content.ReadAsStringAsync();
+        //    return JsonSerializer.Deserialize<SignUpResponse>(contentString)!;
+        //}
     }
 }
