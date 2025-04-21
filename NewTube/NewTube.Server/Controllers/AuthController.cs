@@ -60,7 +60,7 @@ namespace NewTube.Server.Controllers
         }
 
         [HttpGet("roles")]
-        public async Task<Results<JsonHttpResult<IEnumerable<RoleClaimResult>>, UnauthorizedHttpResult>> GetUserRoles(ClaimsPrincipal claimsPrincipal)
+        public IResult GetUserRoles(ClaimsPrincipal claimsPrincipal)
         {
             if (claimsPrincipal != null && claimsPrincipal.Identity.IsAuthenticated)
             {
