@@ -6,6 +6,7 @@ using NewTube.Client.Clients;
 using NewTube.Client.Models;
 using System.Text;
 using NewTube.Shared.Interfaces;
+using NewTube.Shared.DataTransfer;
 
 namespace NewTube.Client
 {
@@ -46,15 +47,15 @@ namespace NewTube.Client
         /// <param name="username">The user's email address.</param>
         /// <param name="password">The user's password.</param>
         /// <returns>The result serialized to a <see cref="FormResult"/></returns>
-        public async Task RequestSignUpAsync(string username, string password)
+        public async Task RequestSignUpAsync(SignUpRequest signUpRequest)
         {
             string[] defaultDetail = ["An unknown error prevented registration from succeeding."];
 
             try
             {
                 var result = await HttpClient.PostAsJsonAsync(
-                    "resgister",
-                    new { username, password }
+                    "auth/resgister",
+                    signUpRequest
                 );
 
                 if (result.IsSuccessStatusCode)
@@ -109,14 +110,14 @@ namespace NewTube.Client
         /// <param name="email">Hte user's email address.</param>
         /// <param name="password">The user's password.</param>
         /// <returns>The result of the login request serialized to a <see cref="FormResult"/></returns>
-        public async Task RequestLoginAsync(string email, string password)
+        public async Task RequestLoginAsync(LoginRequest loginRequest)
         {
             try
             {
                 // login with cookies
                 var result = await HttpClient.PostAsJsonAsync(
-                    "login?useCookies=true",
-                    new { email, password }
+                    "auth/login?useCookies=true",
+                    loginRequest
                 );
 
                 if (result.IsSuccessStatusCode)
@@ -185,7 +186,7 @@ namespace NewTube.Client
                     );
 
                     // request the roles endpoint for the user's roles
-                    var rolesResponse = await HttpClient.GetAsync("roles");
+                    var rolesResponse = await HttpClient.GetAsync("auth/roles");
 
                     // throw if request fails
                     rolesResponse.EnsureSuccessStatusCode();
@@ -226,7 +227,7 @@ namespace NewTube.Client
         public async Task RequestLogoutAsync()
         {
             var emptyContent = new StringContent("{}", Encoding.UTF8, "application/json");
-            await HttpClient.PostAsync("logout", emptyContent);
+            await HttpClient.PostAsync("auth/logout", emptyContent);
 
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
         }
