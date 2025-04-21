@@ -4,8 +4,8 @@ namespace NewTube.Shared.Interfaces
 {
     public interface IAuthService
     {
-        public Task<LoginResponse> RequestLoginAsync(LoginRequest loginRequest);
-        public Task<LogoutResponse> RequestLogoutAsync();
-        public Task<SignUpResponse> RequestSignUpAsync(SignUpRequest signUpRequest);
+        public Task RequestLoginAsync(LoginRequest loginRequest);
+        public Task RequestLogoutAsync();
+        public Task RequestSignUpAsync(SignUpRequest signUpRequest);
     }
 }
