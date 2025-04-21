@@ -7,6 +7,8 @@ using NewTube.Server.Services;
 using Microsoft.AspNetCore.Authentication.BearerToken;
 using Microsoft.AspNetCore.Identity;
 using NewTube.Server.Data;
+using System.Security.Claims;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace NewTube.Server.Controllers
 {
@@ -46,6 +48,36 @@ namespace NewTube.Server.Controllers
             }
 
             return TypedResults.Empty;
+        }
+
+        private class RoleClaimResult
+        {
+            public string Issuer { get; set; }
+            public string OriginalIssuer { get; set; }
+            public string Type { get; set; }
+            public string Value { get; set; }
+            public string ValueType { get; set; }
+        }
+
+        [HttpGet("roles")]
+        public async Task<Results<JsonHttpResult<IEnumerable<RoleClaimResult>>, UnauthorizedHttpResult>> GetUserRoles(ClaimsPrincipal claimsPrincipal)
+        {
+            if (claimsPrincipal != null && claimsPrincipal.Identity.IsAuthenticated)
+            {
+                var identity = (ClaimsIdentity)claimsPrincipal.Identity;
+                var roles = identity.FindAll(identity.RoleClaimType).Select( claim => new RoleClaimResult
+                {
+                    Issuer = claim.Issuer,
+                    OriginalIssuer = claim.OriginalIssuer,
+                    Type = claim.Type,
+                    Value = claim.Value,
+                    ValueType = claim.ValueType
+                });
+
+                return TypedResults.Json(roles);
+            }
+
+            return TypedResults.Unauthorized();
         }
         //[HttpPost("login")]
         //public async Task<LoginResponse> LoginUser([FromBody] LoginRequest loginRequest)
