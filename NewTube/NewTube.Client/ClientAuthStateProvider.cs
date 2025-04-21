@@ -5,11 +5,19 @@ using Microsoft.AspNetCore.Components.Authorization;
 using NewTube.Client.Clients;
 using NewTube.Client.Models;
 using System.Text;
+using NewTube.Shared.Interfaces;
 
 namespace NewTube.Client
 {
-    public class ClientAuthStateProvider : AuthenticationStateProvider
+    public class ClientAuthStateProvider : AuthenticationStateProvider, IAuthService
     {
+        // TODO: I am fully aware that commenting-out code is bad. This is
+        // purely done to make implementation of the IAuthService and
+        // authentication system easier in the long-term. The return statements
+        // will be implemented once the base of the authentication system is
+        // functioning
+        
+
         /// <summary>
         /// Map the JavaScript-formatted properties to C#-formatted classes.
         /// </summary>
@@ -38,7 +46,7 @@ namespace NewTube.Client
         /// <param name="username">The user's email address.</param>
         /// <param name="password">The user's password.</param>
         /// <returns>The result serialized to a <see cref="FormResult"/></returns>
-        public async Task<FormResult> RegisterAsync(string username, string password)
+        public async Task RequestSignUpAsync(string username, string password)
         {
             string[] defaultDetail = ["An unknown error prevented registration from succeeding."];
 
@@ -51,7 +59,7 @@ namespace NewTube.Client
 
                 if (result.IsSuccessStatusCode)
                 {
-                    return new FormResult { Succeeded = true };
+                    //return new FormResult { Succeeded = true };
                 }
 
                 // body should contain details about why it failed
@@ -77,22 +85,22 @@ namespace NewTube.Client
                     }
                 }
 
-                return new FormResult
-                {
-                    Succeeded = false,
-                    ErrorList = problemDetails == null ? defaultDetail : [.. errors]
-                };
+                //return new FormResult
+                //{
+                //    Succeeded = false,
+                //    ErrorList = problemDetails == null ? defaultDetail : [.. errors]
+                //};
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex, "App error");
             }
 
-            return new FormResult
-            {
-                Succeeded = false,
-                ErrorList = defaultDetail
-            };
+            //return new FormResult
+            //{
+            //    Succeeded = false,
+            //    ErrorList = defaultDetail
+            //};
         }
 
         /// <summary>
@@ -101,7 +109,7 @@ namespace NewTube.Client
         /// <param name="email">Hte user's email address.</param>
         /// <param name="password">The user's password.</param>
         /// <returns>The result of the login request serialized to a <see cref="FormResult"/></returns>
-        public async Task<FormResult> LoginAsync(string email, string password)
+        public async Task RequestLoginAsync(string email, string password)
         {
             try
             {
@@ -116,7 +124,7 @@ namespace NewTube.Client
                     // need to refresh auth state
                     NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
 
-                    return new FormResult { Succeeded = true };
+                    //return new FormResult { Succeeded = true };
                 }
             }
             catch (Exception ex)
@@ -125,11 +133,11 @@ namespace NewTube.Client
             }
 
             // unknown error
-            return new FormResult
-            {
-                Succeeded = false,
-                ErrorList = ["Invalid email and/or password."]
-            };
+            //return new FormResult
+            //{
+            //    Succeeded = false,
+            //    ErrorList = ["Invalid email and/or password."]
+            //};
         }
 
         /// <summary>
@@ -215,7 +223,7 @@ namespace NewTube.Client
             return new AuthenticationState(user);
         }
 
-        public async Task LogoutAsync()
+        public async Task RequestLogoutAsync()
         {
             var emptyContent = new StringContent("{}", Encoding.UTF8, "application/json");
             await HttpClient.PostAsync("logout", emptyContent);
