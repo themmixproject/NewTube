@@ -41,105 +41,7 @@ namespace NewTube.Client
         private bool IsAuthenticated { get; set; } = false;
         private readonly ClaimsPrincipal Unauthenticated = new(new ClaimsIdentity());
 
-        /// <summary>
-        /// Register a new user
-        /// </summary>
-        /// <param name="username">The user's email address.</param>
-        /// <param name="password">The user's password.</param>
-        /// <returns>The result serialized to a <see cref="FormResult"/></returns>
-        public async Task RequestSignUpAsync(SignUpRequest signUpRequest)
-        {
-            string[] defaultDetail = ["An unknown error prevented registration from succeeding."];
-
-            try
-            {
-                var result = await HttpClient.PostAsJsonAsync(
-                    "auth/resgister",
-                    signUpRequest
-                );
-
-                if (result.IsSuccessStatusCode)
-                {
-                    //return new FormResult { Succeeded = true };
-                }
-
-                // body should contain details about why it failed
-                var details = await result.Content.ReadAsStringAsync();
-                var problemDetails = JsonDocument.Parse(details);
-                var errors = new List<string>();
-                var errorList = problemDetails.RootElement.GetProperty("errors");
-
-                foreach (var errorEntry in errorList.EnumerateObject())
-                {
-                    if (errorEntry.Value.ValueKind == JsonValueKind.String)
-                    {
-                        errors.Add(errorEntry.Value.GetString()!);
-                    }
-                    else if (errorEntry.Value.ValueKind == JsonValueKind.Array)
-                    {
-                        errors.AddRange(
-                            errorEntry.Value.EnumerateArray().Select(
-                                    e => e.GetString() ?? string.Empty
-                                ).Where(
-                                    e => !string.IsNullOrEmpty(e))
-                                );
-                    }
-                }
-
-                //return new FormResult
-                //{
-                //    Succeeded = false,
-                //    ErrorList = problemDetails == null ? defaultDetail : [.. errors]
-                //};
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex, "App error");
-            }
-
-            //return new FormResult
-            //{
-            //    Succeeded = false,
-            //    ErrorList = defaultDetail
-            //};
-        }
-
-        /// <summary>
-        /// User login.
-        /// </summary>
-        /// <param name="email">Hte user's email address.</param>
-        /// <param name="password">The user's password.</param>
-        /// <returns>The result of the login request serialized to a <see cref="FormResult"/></returns>
-        public async Task RequestLoginAsync(LoginRequest loginRequest)
-        {
-            try
-            {
-                // login with cookies
-                var result = await HttpClient.PostAsJsonAsync(
-                    "auth/login?useCookies=true",
-                    loginRequest
-                );
-
-                if (result.IsSuccessStatusCode)
-                {
-                    // need to refresh auth state
-                    NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
-
-                    //return new FormResult { Succeeded = true };
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex, "App error");
-            }
-
-            // unknown error
-            //return new FormResult
-            //{
-            //    Succeeded = false,
-            //    ErrorList = ["Invalid email and/or password."]
-            //};
-        }
+       
 
         /// <summary>
         /// Get authentication state.
@@ -224,12 +126,5 @@ namespace NewTube.Client
             return new AuthenticationState(user);
         }
 
-        public async Task RequestLogoutAsync()
-        {
-            var emptyContent = new StringContent("{}", Encoding.UTF8, "application/json");
-            await HttpClient.PostAsync("auth/logout", emptyContent);
-
-            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
-        }
     }
 }
