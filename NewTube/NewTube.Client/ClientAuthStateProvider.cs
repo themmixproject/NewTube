@@ -126,5 +126,14 @@ namespace NewTube.Client
             return new AuthenticationState(user);
         }
 
+        /// <summary>
+        /// Raises the <see cref="AuthenticationStateChanged"/> event.
+        /// </summary>
+        /// <param name="task">A <see cref="Task"/> that supplies the updated <see cref="AuthenticationState"/>.</param>
+        public void NotifyAuthenticationStateChanged(Task<AuthenticationState> task)
+        {
+            ArgumentNullException.ThrowIfNull(task);
+        }
+        
     }
 }
