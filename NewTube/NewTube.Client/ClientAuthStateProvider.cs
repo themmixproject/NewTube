@@ -20,13 +20,11 @@ namespace NewTube.Client
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         };
         
-        private readonly AuthClient AuthClient;
         private readonly HttpClient HttpClient;
         private readonly ILogger Logger;
 
-        public ClientAuthStateProvider(AuthClient authClient, HttpClient httpClient, ILogger<ClientAuthStateProvider> logger)
+        public ClientAuthStateProvider(HttpClient httpClient, ILogger<ClientAuthStateProvider> logger)
         {
-            this.AuthClient = authClient;
             this.HttpClient = httpClient;
             this.Logger = logger;
         }
