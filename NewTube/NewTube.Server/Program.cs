@@ -25,8 +25,7 @@ namespace NewTube.Server
             builder.Services.AddScoped<IdentityUserAccessor>();
             builder.Services.AddScoped<IdentityRedirectManager>();
             builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
-            builder.Services.AddScoped<AuthService>();
-            builder.Services.AddScoped<NewTube.Client.Clients.AuthClient>();
+            builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddSingleton<HttpClient>();
 
             builder.Services.AddAuthentication(options =>
