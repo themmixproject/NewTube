@@ -10,15 +10,8 @@ using NewTube.Shared.DataTransfer;
 
 namespace NewTube.Client
 {
-    public class ClientAuthStateProvider : AuthenticationStateProvider, IAuthService
+    public class ClientAuthStateProvider : AuthenticationStateProvider
     {
-        // TODO: I am fully aware that commenting-out code is bad. This is
-        // purely done to make implementation of the IAuthService and
-        // authentication system easier in the long-term. The return statements
-        // will be implemented once the base of the authentication system is
-        // functioning
-        
-
         /// <summary>
         /// Map the JavaScript-formatted properties to C#-formatted classes.
         /// </summary>

@@ -10,6 +10,12 @@ namespace NewTube.Client.Clients
 {
     public class AuthClient
     {
+        // TODO: I am fully aware that commenting-out code is bad. This is
+        // purely done to make implementation of the IAuthService and
+        // authentication system easier in the long-term. The return statements
+        // will be implemented once the base of the authentication system is
+        // functioning
+
         private readonly string _endPoint = "auth";
         private readonly HttpClient HttpClient;
         private readonly ClientAuthStateProvider AuthenticationStateProvider;
