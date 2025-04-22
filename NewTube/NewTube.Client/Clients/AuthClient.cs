@@ -8,7 +8,7 @@ using NewTube.Shared.Interfaces;
 
 namespace NewTube.Client.Clients
 {
-    public class AuthClient
+    public class AuthClient : IAuthService
     {
         // TODO: I am fully aware that commenting-out code is bad. This is
         // purely done to make implementation of the IAuthService and
