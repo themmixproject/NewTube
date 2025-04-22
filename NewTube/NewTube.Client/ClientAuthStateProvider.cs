@@ -119,22 +119,19 @@ namespace NewTube.Client
             return new AuthenticationState(user);
         }
 
-        /// <summary>
-        /// An event that provides a notification when the <see cref="AuthenticationState"/>
-        /// has changed. For example, this event may be raised if a user logs in or out.
-        /// </summary>
-        private new event AuthenticationStateChangedHandler? AuthenticationStateChanged;
-
+        // TODO: Improve implementation of this because this is extremely
+        // hacky. The only reason why this is implemented like this is
+        // because NotifyAuthenticationStateChanged is a protected
+        // method
         /// <summary>
         /// Raises the <see cref="AuthenticationStateChanged"/> event.
         /// </summary>
         /// <param name="task">A <see cref="Task"/> that supplies the updated <see cref="AuthenticationState"/>.</param>
-        public new void NotifyAuthenticationStateChanged(Task<AuthenticationState> task)
+        public void _NotifyAuthenticationStateChanged(Task<AuthenticationState> task)
         {
-            ArgumentNullException.ThrowIfNull(task);
-
-            AuthenticationStateChanged?.Invoke(task);
+            NotifyAuthenticationStateChanged(task);
         }
+
 
     }
 }
