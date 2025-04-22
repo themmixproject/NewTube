@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.Logging;
 using NewTube.Shared.DataTransfer;
 using NewTube.Shared.Interfaces;
@@ -11,10 +12,17 @@ namespace NewTube.Client.Clients
     {
         private readonly string _endPoint = "auth";
         private readonly HttpClient _httpClient;
-        
-        public AuthClient(HttpClient httpClient)
+        private readonly ClientAuthStateProvider AuthenticationStateProvider;
+        private readonly ILogger Logger;
+
+        public AuthClient(
+            HttpClient httpClient,
+            ClientAuthStateProvider authenticationStateProvider,
+            ILogger<AuthClient> logger)
         {
+            Logger = logger;
             _httpClient = httpClient;
+            AuthenticationStateProvider = authenticationStateProvider;
         }
 
         public async Task RequestLoginAsync(LoginRequest loginRequest)
@@ -34,7 +42,7 @@ namespace NewTube.Client.Clients
 
             try
             {
-                var result = await HttpClient.PostAsJsonAsync(
+                var result = await _httpClient.PostAsJsonAsync(
                     "auth/resgister",
                     signUpRequest
                 );
@@ -96,7 +104,7 @@ namespace NewTube.Client.Clients
             try
             {
                 // login with cookies
-                var result = await HttpClient.PostAsJsonAsync(
+                var result = await _httpClient.PostAsJsonAsync(
                     "auth/login?useCookies=true",
                     loginRequest
                 );
@@ -104,7 +112,9 @@ namespace NewTube.Client.Clients
                 if (result.IsSuccessStatusCode)
                 {
                     // need to refresh auth state
-                    NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+                    AuthenticationStateProvider.NotifyAuthenticationStateChanged(
+                        AuthenticationStateProvider.GetAuthenticationStateAsync()
+                    );
 
                     //return new FormResult { Succeeded = true };
                 }
@@ -125,9 +135,11 @@ namespace NewTube.Client.Clients
         public async Task RequestLogoutAsync()
         {
             var emptyContent = new StringContent("{}", Encoding.UTF8, "application/json");
-            await HttpClient.PostAsync("auth/logout", emptyContent);
+            await _httpClient.PostAsync("auth/logout", emptyContent);
 
-            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+            AuthenticationStateProvider.NotifyAuthenticationStateChanged(
+                AuthenticationStateProvider.GetAuthenticationStateAsync()
+            );
         }
 
         //public async Task<LoginResponse> RequestLoginAsync(LoginRequest loginRequest)
