@@ -11,7 +11,7 @@ namespace NewTube.Client.Clients
     public class AuthClient
     {
         private readonly string _endPoint = "auth";
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient HttpClient;
         private readonly ClientAuthStateProvider AuthenticationStateProvider;
         private readonly ILogger Logger;
 
@@ -21,13 +21,8 @@ namespace NewTube.Client.Clients
             ILogger<AuthClient> logger)
         {
             Logger = logger;
-            _httpClient = httpClient;
+            HttpClient = httpClient;
             AuthenticationStateProvider = authenticationStateProvider;
-        }
-
-        public async Task RequestLoginAsync(LoginRequest loginRequest)
-        {
-            await _httpClient.PostAsJsonAsync($"{_endPoint}/login", loginRequest);
         }
 
         /// <summary>
@@ -42,7 +37,7 @@ namespace NewTube.Client.Clients
 
             try
             {
-                var result = await _httpClient.PostAsJsonAsync(
+                var result = await HttpClient.PostAsJsonAsync(
                     "auth/resgister",
                     signUpRequest
                 );
@@ -104,7 +99,7 @@ namespace NewTube.Client.Clients
             try
             {
                 // login with cookies
-                var result = await _httpClient.PostAsJsonAsync(
+                var result = await HttpClient.PostAsJsonAsync(
                     "auth/login?useCookies=true",
                     loginRequest
                 );
@@ -135,7 +130,7 @@ namespace NewTube.Client.Clients
         public async Task RequestLogoutAsync()
         {
             var emptyContent = new StringContent("{}", Encoding.UTF8, "application/json");
-            await _httpClient.PostAsync("auth/logout", emptyContent);
+            await HttpClient.PostAsync("auth/logout", emptyContent);
 
             AuthenticationStateProvider.NotifyAuthenticationStateChanged(
                 AuthenticationStateProvider.GetAuthenticationStateAsync()
