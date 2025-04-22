@@ -113,7 +113,7 @@ namespace NewTube.Client.Clients
                 if (result.IsSuccessStatusCode)
                 {
                     // need to refresh auth state
-                    AuthenticationStateProvider.NotifyAuthenticationStateChanged(
+                    AuthenticationStateProvider._NotifyAuthenticationStateChanged(
                         AuthenticationStateProvider.GetAuthenticationStateAsync()
                     );
 
@@ -138,7 +138,7 @@ namespace NewTube.Client.Clients
             var emptyContent = new StringContent("{}", Encoding.UTF8, "application/json");
             await HttpClient.PostAsync("auth/logout", emptyContent);
 
-            AuthenticationStateProvider.NotifyAuthenticationStateChanged(
+            AuthenticationStateProvider._NotifyAuthenticationStateChanged(
                 AuthenticationStateProvider.GetAuthenticationStateAsync()
             );
         }
