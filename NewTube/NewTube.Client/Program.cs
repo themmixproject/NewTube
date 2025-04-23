@@ -13,7 +13,8 @@ namespace NewTube.Client
 
             builder.Services.AddAuthorizationCore();
             builder.Services.AddCascadingAuthenticationState();
-            builder.Services.AddSingleton<AuthenticationStateProvider, ClientAuthStateProvider>();
+            builder.Services.AddSingleton<ClientAuthStateProvider, ClientAuthStateProvider>();
+            builder.Services.AddSingleton<AuthenticationStateProvider>(sp => sp.GetRequiredService<ClientAuthStateProvider>());
             builder.Services.AddSingleton<IAuthService, AuthClient>();
             builder.Services.AddSingleton(new HttpClient
             {
