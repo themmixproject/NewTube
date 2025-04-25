@@ -117,22 +117,17 @@ namespace NewTube.Client
             return new AuthenticationState(user);
         }
 
-        // TODO: Improve implementation of this because this is extremely
-        // hacky. The only reason why this is implemented like this is
-        // because NotifyAuthenticationStateChanged is a protected
-        // method
         /// <summary>
-        /// Raises the <see cref="AuthenticationStateChanged"/> event.
+        /// Aan event that provides notification when the
+        /// <see cref="AuthenticationState"/> has changed. For example, this
+        /// event may be raised if a user logs in or out.
         /// </summary>
-        /// <param name="task">A <see cref="Task"/> that supplies the updated <see cref="AuthenticationState"/>.</param>
-        public void _NotifyAuthenticationStateChanged(Task<AuthenticationState> task)
-        {
-            NotifyAuthenticationStateChanged(task);
-        }
-
-         
         public event AuthenticationStateChangedHandler? AuthenticationStateChanged;
 
+        /// <summary>
+        /// Raised the <see cref="AuthenticationStateChanged"/> event.
+        /// </summary>
+        /// <param name="task">A <see cref="Task"/> that supplies the updated <see cref="AuthenticationStateChanged"/>.</param>
         public void NotifyAuthenticationStateChanged(Task<AuthenticationState> task)
         {
             ArgumentNullException.ThrowIfNull(task);
