@@ -130,6 +130,17 @@ namespace NewTube.Client
             NotifyAuthenticationStateChanged(task);
         }
 
+         
+        public event AuthenticationStateChangedHandler? AuthenticationStateChanged;
+
+        public void NotifyAuthenticationStateChanged(Task<AuthenticationState> task)
+        {
+            ArgumentNullException.ThrowIfNull(task);
+
+            AuthenticationStateChanged?.Invoke(task);
+        }
+
+
 
     }
 }
