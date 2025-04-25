@@ -47,6 +47,7 @@ namespace NewTube.Server
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddSignInManager()
                 .AddDefaultTokenProviders();
