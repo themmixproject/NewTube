@@ -7,11 +7,14 @@ using NewTube.Client.Models;
 using System.Text;
 using NewTube.Shared.Interfaces;
 using NewTube.Shared.DataTransfer;
+using Microsoft.JSInterop;
 
 namespace NewTube.Client
 {
     public class ClientAuthStateProvider : AuthenticationStateProvider
     {
+        private readonly IJSRuntime _jsRuntime;
+
         /// <summary>
         /// Map the JavaScript-formatted properties to C#-formatted classes.
         /// </summary>
@@ -116,6 +119,41 @@ namespace NewTube.Client
             // return the state
             return new AuthenticationState(user);
         }
+
+        public async Task SetTokenAsync(string token, DateTime expiry = default)
+        {
+            if (token == null)
+            {
+                await _jsRuntime.InvokeAsync<object>("localStorage.removeItem", "authToken");
+                await _jsRuntime.InvokeAsync<object>("localStorage.removeItem", "authTokenExpiry");
+            }
+            else
+            {
+                await _jsRuntime.InvokeAsync<object>("localStorage.setTime", "authToken", token);
+                await _jsRuntime.InvokeAsync<object>("localStorage.setTime", "authTokenExpiry", expiry);
+            }
+
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+        }
+
+        public async Task<string> GetTokenAsync()
+        {
+            var expiry = await _jsRuntime.InvokeAsync<object>("localStorage.getItem", "authTokenExpiry");
+            if (expiry != null)
+            {
+                if(DateTime.Parse(expiry.ToString()) > DateTime.Now)
+                {
+                    return await _jsRuntime.InvokeAsync<string>("localStorage.getItem", "authToken");
+                }
+                else
+                {
+                    await SetTokenAsync(null);
+                }
+            }
+
+            return null;
+        }
+
 
         /// <summary>
         /// Aan event that provides notification when the
