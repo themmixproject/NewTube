@@ -11,6 +11,7 @@ namespace NewTube.Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
+            builder.Services.AddTransient<CookieHandler>();
             builder.Services.AddAuthorizationCore();
             builder.Services.AddCascadingAuthenticationState();
             builder.Services.AddSingleton<ClientAuthStateProvider, ClientAuthStateProvider>();
