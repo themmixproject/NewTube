@@ -106,17 +106,16 @@ namespace NewTube.Client.Clients
             {
                 // login with cookies
                 var result = await HttpClient.PostAsJsonAsync(
-                    "auth/login?useCookies=true",
+                    "auth/login",
                     loginRequest
                 );
 
                 if (result.IsSuccessStatusCode)
                 {
-                    // need to refresh auth state
-                    AuthenticationStateProvider.NotifyAuthenticationStateChanged(
-                        AuthenticationStateProvider.GetAuthenticationStateAsync()
-                    );
+                    var resultContent = await result.Content.ReadAsStringAsync();
+                    var loginResult = JsonSerializer.Deserialize<AspNetLoginResult>(resultContent);
 
+                    await AuthenticationStateProvider.SetTokenAsync(loginResult.Token, loginResult.Expiry);
                     //return new FormResult { Succeeded = true };
                 }
             }
@@ -137,10 +136,7 @@ namespace NewTube.Client.Clients
         {
             var emptyContent = new StringContent("{}", Encoding.UTF8, "application/json");
             await HttpClient.PostAsync("auth/logout", emptyContent);
-
-            AuthenticationStateProvider.NotifyAuthenticationStateChanged(
-                AuthenticationStateProvider.GetAuthenticationStateAsync()
-            );
+            await AuthenticationStateProvider.SetTokenAsync(null);
         }
 
         //public async Task<LoginResponse> RequestLoginAsync(LoginRequest loginRequest)
