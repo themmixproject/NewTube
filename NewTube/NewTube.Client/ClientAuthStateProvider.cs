@@ -168,9 +168,7 @@ namespace NewTube.Client
         /// <param name="task">A <see cref="Task"/> that supplies the updated <see cref="AuthenticationStateChanged"/>.</param>
         public void NotifyAuthenticationStateChanged(Task<AuthenticationState> task)
         {
-            ArgumentNullException.ThrowIfNull(task);
-
-            AuthenticationStateChanged?.Invoke(task);
+            base.NotifyAuthenticationStateChanged(task);
         }
 
 
