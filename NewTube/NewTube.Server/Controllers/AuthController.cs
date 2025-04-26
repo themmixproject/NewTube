@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using NewTube.Server.Data;
 using System.Security.Claims;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace NewTube.Server.Controllers
 {
@@ -59,6 +60,7 @@ namespace NewTube.Server.Controllers
             public string ValueType { get; set; }
         }
 
+        [Authorize]
         [HttpGet("roles")]
         public IResult GetUserRoles(ClaimsPrincipal claimsPrincipal)
         {
