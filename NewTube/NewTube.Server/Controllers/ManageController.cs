@@ -1,14 +1,19 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using NewTube.Server.Data;
 using System.Security.Claims;
+using System.Web;
 
 namespace NewTube.Server.Controllers
 {
     [Route("[controller]")]
-    public class ManageController
+    [Authorize]
+    public class ManageController : ControllerBase
     {
         private readonly SignInManager<ApplicationUser> SingInManager;
         private readonly UserManager<ApplicationUser> UserManager;
