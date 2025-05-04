@@ -7,5 +7,6 @@ namespace NewTube.Shared.Interfaces
         public Task RequestLoginAsync(LoginRequest loginRequest);
         public Task RequestLogoutAsync();
         public Task RequestSignUpAsync(SignUpRequest signUpRequest);
+        public Task<bool> CheckIfAuthenticatedAsync();
     }
 }
