@@ -6,7 +6,6 @@ using NewTube.Client;
 using NewTube.Server.Components;
 using NewTube.Server.Components.Account;
 using NewTube.Server.Data;
-using NewTube.Server.Services;
 using NewTube.Shared.Interfaces;
 
 namespace NewTube.Server
