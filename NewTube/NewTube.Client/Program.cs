@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using NewTube.Shared.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http;
 
 namespace NewTube.Client
@@ -12,19 +11,19 @@ namespace NewTube.Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-            builder.Services.AddTransient<CookieHandler>();
             builder.Services.AddAuthorizationCore();
             builder.Services.AddCascadingAuthenticationState();
-            builder.Services.AddSingleton<AuthenticationStateProvider>(sp => sp.GetRequiredService<CookieAuthenticationStateProvider>());
-            builder.Services.AddSingleton<IAuthService, CookieAuthenticationStateProvider>();
 
-            builder.Services.AddScoped(sp => new HttpClient{
-                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+            builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStateProvider>();
+            builder.Services.AddScoped(sp => (IAuthService)sp.GetRequiredService<AuthenticationStateProvider>());
+
+            builder.Services.AddTransient<CookieHandler>();
+            builder.Services.AddScoped<HttpClient>(sp =>
+            {
+                var httpClient = HttpClientFactory.Create(sp.GetRequiredService<CookieHandler>());
+                httpClient.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
+                return httpClient;
             });
-
-            var httpClient = HttpClientFactory.Create(new CookieHandler());
-            httpClient.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
-            builder.Services.AddScoped<HttpClient>(sp => httpClient);
 
             await builder.Build().RunAsync();
         }
