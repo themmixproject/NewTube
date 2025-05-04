@@ -1,18 +1,19 @@
 ﻿@inherits FragmentBase
 @rendermode InteractiveWebAssembly
 @inject IAuthService authClient
+@inject NavigationManager navigationManager
 
 <TableWrapper>
     <LabeledInputTableRow
     label="User Name:"
     type="text"
-    placeholder="user name"
-    @bind-value="@loginRequest.Username" />
+    placeholder="email"
+    @bind-value="@email" />
     <LabeledInputTableRow
     label="Password:"
     type="password"
     placeholder="password"
-    @bind-value="@loginRequest.Password" />
+    @bind-value="@password" />
     <TableFormFooter>
         <input type="submit" value="Login" @onclick="@requestLogin" @onclick:preventDefault/>
         @if (displaySignUpLink){
@@ -23,10 +24,16 @@
 
 @code {
     [Parameter] public bool displaySignUpLink { get; set; }
-    private LoginRequest loginRequest { get; set; } = new();
+
+    private string email { get; set; } = "";
+    private string password { get; set; } = "";
 
     public async Task requestLogin()
     {
-        await authClient.RequestLoginAsync(loginRequest);
+        RequestResponse response = await authClient.RequestLoginAsync(email, password);
+        if (response.IsSuccessful)
+        {
+            navigationManager.NavigateTo("/");
+        }
     }
 }

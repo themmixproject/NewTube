@@ -1,5 +1,6 @@
 ﻿@rendermode InteractiveWebAssembly
 @inject NavigationManager navigationManager
+@inject IAuthService authService
 
 <div>
     <AuthorizeView>
@@ -16,8 +17,12 @@
 </div>
 
 @code {
-    public void requestLogout()
+    public async Task requestLogout()
     {
-        Console.WriteLine("request log out");
+        RequestResponse response = await authService.RequestLogoutAsync();
+        if (response.IsSuccessful)
+        {
+            navigationManager.NavigateTo("/");
+        }
     }
 }

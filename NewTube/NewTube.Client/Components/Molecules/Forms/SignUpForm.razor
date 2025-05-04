@@ -2,9 +2,9 @@
 @inject IAuthService authService
 
 <TableWrapper>
-    <LabeledInputTableRow label="Email Address:" type="email" @bind-value="@signUpRequest.Email" />
-    <LabeledInputTableRow label="User Name:" type="text" @bind-value="@signUpRequest.Username" />
-    <LabeledInputTableRow label="Password:" type="password" @bind-value="@signUpRequest.Password" />
+    <LabeledInputTableRow label="Email Address:" type="email" @bind-value="@email" />
+    @* <LabeledInputTableRow label="User Name:" type="text" @bind-value="@signUpRequest.Username" /> *@
+    <LabeledInputTableRow label="Password:" type="password" @bind-value="@password" />
     <LabeledInputTableRow label="Confirm Password:" type="password" />
     <TableFormFooter>
         - I certify I am over 13 years old
@@ -14,10 +14,11 @@
 </TableWrapper>
 
 @code {
-    private SignUpRequest signUpRequest { get; set; } = new();
+    private string email { get; set; } = "";
+    private string password { get; set; } = "";
 
     private async Task requestSignUp()
     {
-        await authService.RequestSignUpAsync(signUpRequest);
+        await authService.RequestSignUpAsync(email, password);
     }
 }
