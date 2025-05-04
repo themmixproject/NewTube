@@ -73,6 +73,7 @@ namespace NewTube.Server
                 app.UseHsts();
             }
 
+            app.MapGroup("/auth").MapIdentityApi<ApplicationUser>();
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
