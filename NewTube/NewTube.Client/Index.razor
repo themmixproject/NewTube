@@ -1,5 +1,6 @@
 ﻿@using NewTube.Client.Router
 @using Microsoft.AspNetCore.Components.Web
+@using static Microsoft.AspNetCore.Components.Web.RenderMode
 
 <html lang="en">
 
@@ -14,7 +15,7 @@
     </head>
 
     <body>
-        <RouterOutlet/>
+        <RouterOutlet @rendermode="InteractiveWebAssembly"/>
         <script src="_framework/blazor.web.js"></script>
     </body>
 

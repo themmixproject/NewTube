@@ -6,6 +6,7 @@ using NewTube.Client;
 using NewTube.Server.Components;
 using NewTube.Server.Components.Account;
 using NewTube.Server.Data;
+using NewTube.Server.Services;
 using NewTube.Shared.Interfaces;
 
 namespace NewTube.Server
@@ -51,6 +52,8 @@ namespace NewTube.Server
                 .AddDefaultTokenProviders();
 
             builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+            builder.Services.AddScoped<IAuthService, AuthService>();
 
             builder.Services.AddControllers();
 
