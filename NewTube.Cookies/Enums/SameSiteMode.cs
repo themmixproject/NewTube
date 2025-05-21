@@ -9,7 +9,6 @@ namespace NewTube.Cookies.Enums
 
     public enum SameSiteMode
     {
-
         /// <summary>
         /// Indicates the client should disable same-site restr
         /// </summary>
