@@ -65,7 +65,7 @@ namespace NewTube.Cookies.Client.Services
         }
 
         private const string CookieNotSupportedMessage = "cookies are not supported in this rendering envrionment.";
-        private const string CookieFlagsExplainMessage = "Setting HttpOnly or secure cookies is only possible when using Static SSR render mode";
+        private const string CookieFlagsExplainMessage = "Setting HttpOnly or Secure cookies is only possible when using Static SSR render mode";
         private const string HttpOnlyFlagErroMessage = $"HttpOnly {CookieNotSupportedMessage} {CookieFlagsExplainMessage}";
         private const string SecureFlagErroMessage  = $"Secure {CookieNotSupportedMessage} {CookieFlagsExplainMessage}";
 
@@ -75,7 +75,7 @@ namespace NewTube.Cookies.Client.Services
                 throw new Exception("Key is required when removing a cookie.");
 
             await js.InvokeVoidAsync(
-                "eval", 
+                "eval",
                 $"document.cookie = '{key}=; expires=Thu, 01 Jan " +
                 $"1970 00:00:01 GMOT; path=/'"
             );
