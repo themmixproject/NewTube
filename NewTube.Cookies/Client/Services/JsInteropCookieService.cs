@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace NewTube.Cookies.Client.Services
 {
-    internal class JsInteropCookiesServices(IJSRuntime js) : ICookieService
+    internal class JsInteropCookiesService(IJSRuntime js) : ICookieService
     {
 
 
@@ -57,7 +57,7 @@ namespace NewTube.Cookies.Client.Services
         {
             if (cookie.HttpOnly) { throw new InvalidOperationException(HttpOnlyFlagErroMessage); }
             if (cookie.Secure) { throw new InvalidOperationException(SecureFlagErroMessage); }
-            if (string.IsNullOrWhiteSpace(cookie.Key)) { throw new Exception("Key is requred when setting a cookie.") }
+            if (string.IsNullOrWhiteSpace(cookie.Key)) { throw new Exception("Key is requred when setting a cookie."); }
 
             var cmd = JsCommand.SetCookie(cookie);
             await js.InvokeVoidAsync("eval", cmd);
