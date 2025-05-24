@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.Features;
 using NewTube.Cookies.Interfaces;
 using NewTube.Cookies.Models;
+using NewTube.Cookies.Server.Extensions;
 using System.Text.Json;
 
 namespace NewTube.Cookies.Server.Services
@@ -15,7 +16,11 @@ namespace NewTube.Cookies.Server.Services
         public HttpContextCookieService(IHttpContextAccessor httpContextAccessor)
         {
             _httpContext = httpContextAccessor.HttpContext!;
-            _requestCookies = _httpContext.Request.Cookies.Select(c => new Cookie(c.Key, c.Value)).ToDictionary(c => c.Key);
+            _requestCookies = _httpContext.Request.Cookies
+                .Select(c => new Cookie(c.Key, c.Value))
+                .ToDictionary(c => c.Key);
+
+            ResponseHeaders = _httpContext.Features.GetRequiredFeature<IHttpResponseFeature>().Headers;
         }
 
         public Task<IEnumerable<Cookie>> GetAllAsync()
