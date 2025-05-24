@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using NewTube.Cookies.Client.Services;
 using NewTube.Cookies.Interfaces;
 
