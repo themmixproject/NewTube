@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NewTube.Client\NewTube.Client.csproj" />
     <PackageReference Include="BitzArt.Blazor.Auth" Version="2.1.0" />
+    <PackageReference Include="BitzArt.Blazor.Auth.Server" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />

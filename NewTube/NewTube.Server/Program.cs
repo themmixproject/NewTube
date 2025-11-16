@@ -1,8 +1,8 @@
+using BitzArt.Blazor.Auth.Server;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
-using NewTube.Server.Components;
 using NewTube.Server.Components.Account;
 using NewTube.Server.Data;
 
@@ -30,6 +30,9 @@ namespace NewTube.Server
                     options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
                 })
                 .AddIdentityCookies();
+
+            builder.AddBlazorAuth();
+            
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>

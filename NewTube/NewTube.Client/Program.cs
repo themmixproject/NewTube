@@ -1,3 +1,4 @@
+using BitzArt.Blazor.Auth.Client;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using NewTube.Client;
@@ -13,6 +14,8 @@ namespace NewTube.Client
             builder.Services.AddAuthorizationCore();
             builder.Services.AddCascadingAuthenticationState();
             builder.Services.AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
+
+            builder.AddBlazorAuth();
 
             await builder.Build().RunAsync();
         }
