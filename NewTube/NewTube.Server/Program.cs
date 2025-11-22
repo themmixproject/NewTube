@@ -31,7 +31,7 @@ namespace NewTube.Server
                 })
                 .AddIdentityCookies();
 
-            builder.AddBlazorAuth();
+            builder.AddBlazorAuth<AuthenticationService>();
             
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -72,6 +72,7 @@ namespace NewTube.Server
 
             // Add additional endpoints required by the Identity /Account Razor components.
             app.MapAdditionalIdentityEndpoints();
+            app.MapAuthEndpoints();
 
             string WorkingDirPath = Directory.GetCurrentDirectory();
             string ClientAssetsPath = Path.Combine(WorkingDirPath + "../../NewTube.Client", "Assets");
