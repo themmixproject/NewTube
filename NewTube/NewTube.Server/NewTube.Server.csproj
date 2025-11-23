@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\NewTube.Shared\NewTube.Shared.csproj" />
     <ProjectReference Include="..\NewTube.Client\NewTube.Client.csproj" />
     <PackageReference Include="BitzArt.Blazor.Auth" Version="2.1.0" />
     <PackageReference Include="BitzArt.Blazor.Auth.Server" Version="2.1.0" />

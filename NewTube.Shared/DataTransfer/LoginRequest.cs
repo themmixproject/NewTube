@@ -1,5 +1,3 @@
-using System;
-
 namespace NewTube.Shared.DataTransfer;
 
 public class LoginRequest
