@@ -1,9 +1,9 @@
-using System;
+using NewTube.Shared.DataTransfer;
 
 namespace NewTube.Shared.Interfaces;
 
 public interface IAuthenticationService
 {
-    public void LoginUser();
+    public Task<LoginResponse> LoginUser();
     public void RegisterUser();
 }
