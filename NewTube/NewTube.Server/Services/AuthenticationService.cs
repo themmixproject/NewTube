@@ -3,16 +3,25 @@ using NewTube.Shared.DataTransfer;
 using Microsoft.AspNetCore.Identity;
 using NewTube.Server.Data;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using NewTube.Client.Components.Pages;
 
 namespace NewTube.Server.Services;
 
 public class AuthenticationService : IAuthenticationService
 {
     private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly IUserStore<ApplicationUser> _userStore;
 
-    public AuthenticationService(SignInManager<ApplicationUser> signInManager)
-    {
+    public AuthenticationService(
+        SignInManager<ApplicationUser> signInManager,
+        UserManager<ApplicationUser> userManager,
+        IUserStore<ApplicationUser> userStore
+    ) {
         _signInManager = signInManager;
+        _userManager = userManager;
+        _userStore = userStore;
     }
 
     public async Task<LoginResponse> LoginUser(LoginRequest loginRequest)
@@ -24,5 +33,18 @@ public class AuthenticationService : IAuthenticationService
 
         return response;
     }
-    public void RegisterUser() {}
+    public async Task<SignUpResponse> RegisterUserAsync(
+        SignUpRequest signUpRequest,
+        CancellationToken cancellationToken = default
+    ) {
+        ApplicationUser user = new ApplicationUser();
+        await _userStore.SetUserNameAsync(user, signUpRequest.UserName, cancellationToken);
+
+        var result = await _userManager.CreateAsync(user, signUpRequest.PassWord);
+        
+        var response = new SignUpResponse {isSuccessful = false};
+        if (result.Succeeded) { response.isSuccessful = false;}
+        
+        return response;
+    }
 }

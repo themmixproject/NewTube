@@ -4,6 +4,6 @@ namespace NewTube.Shared.Interfaces;
 
 public interface IAuthenticationService
 {
-    public Task<LoginResponse> LoginUser();
-    public void RegisterUser();
+    public Task<LoginResponse> LoginUserAsync();
+    public void RegisterUserAsync();
 }
