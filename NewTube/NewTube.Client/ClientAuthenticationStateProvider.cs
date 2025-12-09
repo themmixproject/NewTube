@@ -8,7 +8,7 @@ namespace NewTube.Client;
 
 public class ClientAuthenticationStateProvider : AuthenticationStateProvider
 {
-    private readonly HttpClient _httpClienta;
+    private readonly HttpClient _httpClient;
     private readonly ICookieService _cookieService;
 
     public ClientAuthenticationStateProvider(
