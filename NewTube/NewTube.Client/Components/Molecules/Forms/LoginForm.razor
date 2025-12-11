@@ -4,7 +4,15 @@
     <LabeledInputTableRow label="User Name:" type="text" placeholder="user name" />
     <LabeledInputTableRow label="Password:" type="password" placeholder="password" />
     <TableFormFooter>
-        <input type="submit" value="Login" />
+        <button @onclick="loginUser" @onclick:preventDefault="true">login or something</button>
         @ChildContent
     </TableFormFooter>
 </TableWrapper>
+
+@code {
+    private void loginUser() {
+        Console.WriteLine("your mom");
+    }
+}
+
+

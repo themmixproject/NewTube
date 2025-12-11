@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.Components.Authorization;
 using MMIX.Blazor.Cookies;
+using NewTube.Client.Components.Pages;
 using NewTube.Shared.DataTransfer;
 using NewTube.Shared.Interfaces;
 
@@ -25,15 +26,31 @@ public class AuthService : IAuthenticationService
         _cookieService = cookieService;
     }
 
-    public async Task<SignUpResponse> RegisterUserAsync(SignUpRequest signUpRequest)
-    {
-        return await _httpClient.PostAsJsonAsync<SignUpResponse>("api/accounts", signUpRequest);
+    public async Task<SignUpResponse> RegisterUserAsync(
+        SignUpRequest signUpRequest,
+        CancellationToken cancellationToken = default
+    ) {
+        var signUpJSON = JsonSerializer.Serialize(signUpRequest);
+        var response = await _httpClient.PostAsync(
+            "api/accounts",
+            new StringContent(signUpJSON, Encoding.UTF8, "application/json"),
+            cancellationToken
+        );
+        var signUpResult = JsonSerializer.Deserialize<SignUpResponse>(await response.Content.ReadAsStringAsync());
+
+        return signUpResult;
     }
 
-    public async Task<LoginResponse> LoginUserAsync(LoginRequest loginRequest)
-    {
+    public async Task<LoginResponse> LoginUserAsync(
+        LoginRequest loginRequest,
+        CancellationToken cancellationToken = default
+    ) {
         var loginJSON = JsonSerializer.Serialize(loginRequest); 
-        var response = await _httpClient.PostAsync("api/login", new StringContent(loginJSON, Encoding.UTF8, "applicatoin/json"));
+        var response = await _httpClient.PostAsync(
+            "api/login",
+            new StringContent(loginJSON, Encoding.UTF8, "applicatoin/json"),
+            cancellationToken
+        );
         var loginResult = JsonSerializer.Deserialize<LoginResponse>(await response.Content.ReadAsStringAsync());
 
         if (!loginResult.isSuccessful)

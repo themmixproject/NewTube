@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using NewTube.Client;
+using NewTube.Client.Services;
+using NewTube.Shared.Interfaces;
 
 namespace NewTube.Client
 {
@@ -12,7 +14,8 @@ namespace NewTube.Client
 
             builder.Services.AddAuthorizationCore();
             builder.Services.AddCascadingAuthenticationState();
-            builder.Services.AddSingleton<AuthenticationStateProvider, PersistentAuthenticationStateProvider>();
+            builder.Services.AddSingleton<AuthenticationStateProvider, ClientAuthenticationStateProvider>();
+            builder.Services.AddScoped<IAuthenticationService, AuthService>();
 
             await builder.Build().RunAsync();
         }
