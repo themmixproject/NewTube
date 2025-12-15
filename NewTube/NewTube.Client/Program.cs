@@ -21,7 +21,7 @@ namespace NewTube.Client
                 return client;
             });
 
-            builder.Services.AddCookieService();
+            builder.Services.AddCookieService(ServiceLifetime.Singleton);
 
             builder.Services.AddAuthorizationCore();
             builder.Services.AddCascadingAuthenticationState();
