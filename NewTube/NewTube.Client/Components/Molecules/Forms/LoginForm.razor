@@ -1,17 +1,18 @@
 ﻿@inherits FragmentBase
+@rendermode InteractiveAuto
 
-<TableWrapper>
+<TableWrapper> 
     <LabeledInputTableRow label="User Name:" type="text" placeholder="user name" />
     <LabeledInputTableRow label="Password:" type="password" placeholder="password" />
     <TableFormFooter>
-        <button @onclick="loginUser" @onclick:preventDefault="true">login or something</button>
+        <button @onclick="loginUser">login</button>
         @ChildContent
     </TableFormFooter>
 </TableWrapper>
 
 @code {
     private void loginUser() {
-        Console.WriteLine("your mom");
+        Console.WriteLine("hello world!");
     }
 }
 
