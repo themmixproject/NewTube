@@ -8,16 +8,13 @@ namespace NewTube.Client;
 
 public class ClientAuthenticationStateProvider : AuthenticationStateProvider
 {
-    private readonly HttpClient _httpClient;
     private readonly ICookieService _cookieService;
 
     public ClientAuthenticationStateProvider(
-        HttpClient httpClient,
         ICookieService cookieService
     )
     {
         _cookieService = cookieService;
-        _httpClient = httpClient;
     }
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
