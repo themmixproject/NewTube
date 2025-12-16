@@ -5,9 +5,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
+using MMIX.Blazor.Cookies.Server;
+using NewTube.Client.Services;
 using NewTube.Server.Components;
 using NewTube.Server.Components.Account;
 using NewTube.Server.Data;
+using NewTube.Server.Services;
+using NewTube.Shared.Interfaces;
 
 namespace NewTube.Server
 {
@@ -28,6 +32,7 @@ namespace NewTube.Server
             builder.Services.AddScoped<IdentityUserAccessor>();
             builder.Services.AddScoped<IdentityRedirectManager>();
             builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
+
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -57,6 +62,23 @@ namespace NewTube.Server
                 .AddDefaultTokenProviders();
 
             builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+            builder.Services.AddCookieService();
+            
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddScoped<AuthService>();
+            builder.Services.AddScoped<AuthenticationService>();
+            builder.Services.AddScoped<IAuthenticationService>(serviceProvider =>
+            {
+                HttpContext httpContext = serviceProvider.GetRequiredService<IHttpContextAccessor>().HttpContext;
+                if (httpContext != null && !httpContext.Response.HasStarted)
+                {
+                    return serviceProvider.GetRequiredService<AuthService>();
+                }
+
+                return serviceProvider.GetRequiredService<AuthenticationService>();
+            });
+
 
             var app = builder.Build();
 
