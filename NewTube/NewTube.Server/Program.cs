@@ -63,6 +63,8 @@ namespace NewTube.Server
 
             builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 
+            builder.Services.AddScoped<HttpClient>();
+
             builder.Services.AddCookieService();
             
             builder.Services.AddHttpContextAccessor();
