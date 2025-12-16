@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NewTube.Server.Data;
@@ -22,6 +23,7 @@ namespace NewTube.Server.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> RegisterUserAsync([FromBody] SignUpRequest signUpRequest)
         {
             SignUpResponse signUpResponse = await _authenticationService.RegisterUserAsync(signUpRequest);

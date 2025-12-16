@@ -63,6 +63,8 @@ namespace NewTube.Server
                 options.Password.RequiredLength = 0;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredUniqueChars = 0;
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddSignInManager()
