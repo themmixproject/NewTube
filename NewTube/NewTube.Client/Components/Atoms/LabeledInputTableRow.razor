@@ -3,7 +3,7 @@
         <label>@label</label>
     </td>
     <td>
-        <input type="@type" placeholder="@placeholder"/>
+        <input type="@type" placeholder="@placeholder" value="@value" @oninput="onValueChanged" />
     </td>
 </tr>
 
@@ -11,4 +11,12 @@
     [Parameter] public string? label { get; set; }
     [Parameter] public string? placeholder { get; set; }
     [Parameter] public string? type { get; set; }
+    [Parameter] public string value { get; set; } = "";
+    [Parameter] public EventCallback<string> valueChanged { get; set; }
+    
+    private async Task onValueChanged(ChangeEventArgs eventArgs) {
+        value = eventArgs.Value.ToString();
+        await valueChanged.InvokeAsync(value);
+    }
+
 }

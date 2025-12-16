@@ -1,11 +1,19 @@
-﻿<TableWrapper>
+﻿@using NewTube.Shared.DataTransfer
+<TableWrapper>
     <LabeledInputTableRow label="Email Address:" type="email"/>
-    <LabeledInputTableRow label="User Name:" type="text" />
-    <LabeledInputTableRow label="Password:" type="password" />
+    <LabeledInputTableRow label="User Name:" type="text" @bind-value="signUpRequest.UserName"/>
+    <LabeledInputTableRow label="Password:" type="password" @bind-value="signUpRequest.PassWord"/>
     <LabeledInputTableRow label="Confirm Password:" type="password" />
     <TableFormFooter>
         - I certify I am over 13 years old
         <br />
-        <input type="submit" value="Sign Up" />
+        <input type="submit" value="Sign Up" @onclick="Submit" @onsubmit:preventDefault/>
     </TableFormFooter>
 </TableWrapper>
+
+@code {
+    private SignUpRequest signUpRequest { get; set; } = new SignUpRequest();
+    private void Submit() {
+        Console.WriteLine(signUpRequest);
+    }
+}
