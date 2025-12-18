@@ -8,7 +8,6 @@ using NewTube.Shared.Interfaces;
 namespace NewTube.Server.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
     public class AccountsController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -20,6 +19,13 @@ namespace NewTube.Server.Controllers
         ) {
             _authenticationService = authenticationService;
             _userManager = userManager;
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult HttpGet()
+        {
+            return Ok("hello world!");
         }
 
         [HttpPost]

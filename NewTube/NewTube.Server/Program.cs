@@ -106,7 +106,8 @@ namespace NewTube.Server
                 app.UseHsts();
             }
 
-            app.MapControllers();
+            app.MapControllers()
+                .AllowAnonymous();
 
             app.UseAuthentication();
             app.UseAuthorization();

@@ -36,7 +36,8 @@ public class AuthService : IAuthenticationService
             new StringContent(signUpJSON, Encoding.UTF8, "application/json"),
             cancellationToken
         );
-        var signUpResult = JsonSerializer.Deserialize<SignUpResponse>(await response.Content.ReadAsStringAsync());
+        string responseString = await response.Content.ReadAsStringAsync();
+        var signUpResult = JsonSerializer.Deserialize<SignUpResponse>(responseString);
 
         return signUpResult;
     }

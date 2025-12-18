@@ -14,10 +14,10 @@ namespace NewTube.Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-            builder.Services.AddScoped<HttpClient>(serviceProvider =>
+            builder.Services.AddSingleton<HttpClient>(serviceProvider =>
             {
                 var client = new HttpClient();
-                client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
+                client.BaseAddress = new Uri("http:" + builder.HostEnvironment.BaseAddress);
                 return client;
             });
 
@@ -25,8 +25,8 @@ namespace NewTube.Client
 
             builder.Services.AddAuthorizationCore();
             builder.Services.AddCascadingAuthenticationState();
-            builder.Services.AddScoped<AuthenticationStateProvider, ClientAuthenticationStateProvider>();
-            builder.Services.AddScoped<IAuthenticationService, AuthService>();
+            builder.Services.AddSingleton<AuthenticationStateProvider, ClientAuthenticationStateProvider>();
+            builder.Services.AddSingleton<IAuthenticationService, AuthService>();
 
             await builder.Build().RunAsync();
         }

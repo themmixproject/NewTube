@@ -3,6 +3,8 @@
 @using NewTube.Shared.DataTransfer
 @using NewTube.Shared.Interfaces
 
+@inject IAuthenticationService _authService
+
 <TableWrapper>
     <LabeledInputTableRow label="Email Address:" type="email"/>
     <LabeledInputTableRow label="User Name:" type="text" @bind-value="signUpRequest.UserName"/>
@@ -17,7 +19,8 @@
 
 @code {
     private SignUpRequest signUpRequest { get; set; } = new SignUpRequest();
-    private void Submit() {
-        Console.WriteLine(signUpRequest.UserName);
+    private async void Submit() {
+        Console.WriteLine("submit signup");
+        SignUpResponse result = await _authService.RegisterUserAsync(signUpRequest);
     }
 }
