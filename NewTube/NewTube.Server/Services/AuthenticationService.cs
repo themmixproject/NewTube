@@ -49,6 +49,7 @@ public class AuthenticationService : IAuthenticationService
         var response = new SignUpResponse {isSuccessful = false};
         if (result.Succeeded) { response.isSuccessful = false;}
         
+        response.isSuccessful = true;
         return response;
     }
 }

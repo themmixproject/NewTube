@@ -22,14 +22,12 @@ namespace NewTube.Server.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult HttpGet()
         {
             return Ok("hello world!");
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> RegisterUserAsync([FromBody] SignUpRequest signUpRequest)
         {
             SignUpResponse signUpResponse = await _authenticationService.RegisterUserAsync(signUpRequest);
