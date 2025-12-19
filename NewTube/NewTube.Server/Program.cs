@@ -77,17 +77,17 @@ namespace NewTube.Server
             builder.Services.AddCookieService();
             
             builder.Services.AddHttpContextAccessor();
-            builder.Services.AddScoped<AuthService>();
+            builder.Services.AddScoped<AuthenticationClient>();
             builder.Services.AddScoped<AuthenticationService>();
             builder.Services.AddScoped<IAuthenticationService>(serviceProvider =>
             {
                 HttpContext httpContext = serviceProvider.GetRequiredService<IHttpContextAccessor>().HttpContext;
                 if (httpContext != null && !httpContext.Response.HasStarted)
                 {
-                    return serviceProvider.GetRequiredService<AuthService>();
+                    return serviceProvider.GetRequiredService<AuthenticationService>();
                 }
 
-                return serviceProvider.GetRequiredService<AuthenticationService>();
+                return serviceProvider.GetRequiredService<AuthenticationClient>();
             });
 
 
