@@ -10,13 +10,13 @@ using NewTube.Shared.Interfaces;
 
 namespace NewTube.Client.Services;
 
-public class AuthService : IAuthenticationService
+public class AuthenticationClient : IAuthenticationService
 {
     private readonly HttpClient _httpClient;
     private readonly AuthenticationStateProvider _authenticationStateProvider;
     private readonly ICookieService _cookieService;
 
-    public AuthService(
+    public AuthenticationClient(
         AuthenticationStateProvider authenticationStateProvider,
         HttpClient httpClient,
         ICookieService cookieService

@@ -21,12 +21,12 @@ namespace NewTube.Client
                 return client;
             });
 
-            builder.Services.AddCookieService(ServiceLifetime.Scoped);
+            builder.Services.AddCookieService(ServiceLifetime.Singleton);
 
             builder.Services.AddAuthorizationCore();
             builder.Services.AddCascadingAuthenticationState();
             builder.Services.AddSingleton<AuthenticationStateProvider, ClientAuthenticationStateProvider>();
-            builder.Services.AddSingleton<IAuthenticationService, AuthService>();
+            builder.Services.AddSingleton<IAuthenticationService, AuthenticationClient>();
 
             await builder.Build().RunAsync();
         }
