@@ -46,10 +46,13 @@ public class AuthenticationService : IAuthenticationService
 
         var result = await _userManager.CreateAsync(user, signUpRequest.PassWord);
         
-        var response = new SignUpResponse {isSuccessful = false};
-        if (result.Succeeded) { response.isSuccessful = false;}
+        var response = new SignUpResponse { isSucceeded = false };
         
-        response.isSuccessful = true;
+        if (result.Succeeded)
+        {
+            response.isSucceeded = true;
+        }
+
         return response;
     }
 }
