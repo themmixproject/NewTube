@@ -1,9 +1,13 @@
-﻿@inherits FragmentBase
-@rendermode InteractiveAuto
+﻿@using NewTube.Shared.DataTransfer
+@using NewTube.Shared.Interfaces
+@inherits FragmentBase
+@rendermode InteractiveWebAssembly
+
+@inject IAuthenticationService _authService
 
 <TableWrapper> 
-    <LabeledInputTableRow label="User Name:" type="text" placeholder="user name" />
-    <LabeledInputTableRow label="Password:" type="password" placeholder="password" />
+    <LabeledInputTableRow label="User Name:" type="text" placeholder="user name" @bind-value="loginRequest.UserName"/>
+    <LabeledInputTableRow label="Password:" type="password" placeholder="password" @bind-value="loginRequest.Password"/>
     <TableFormFooter>
         <button @onclick="loginUser">login</button>
         @ChildContent
@@ -11,8 +15,11 @@
 </TableWrapper>
 
 @code {
-    private void loginUser() {
-        Console.WriteLine("hello world!");
+    private LoginRequest loginRequest = new LoginRequest();
+
+    private async void loginUser() {
+        var response = await _authService.LoginUserAsync(loginRequest);
+        Console.WriteLine("thing");
     }
 }
 
