@@ -5,6 +5,7 @@
 
 @inject IAuthenticationService _authService
 @inject NavigationManager _navigationManager
+@inject HttpClient _httpClient
 
 <TableWrapper>
     <LabeledInputTableRow label="Email Address:" type="email"/>
@@ -22,6 +23,6 @@
     private SignUpRequest signUpRequest { get; set; } = new SignUpRequest();
     private async void Submit() {
         SignUpResponse result = await _authService.RegisterUserAsync(signUpRequest);
-        _navigationManager.NavigateTo("/");
+        _navigationManager.NavigateTo(_httpClient.BaseAddress.ToString());
     }
 }
