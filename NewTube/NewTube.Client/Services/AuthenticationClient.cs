@@ -49,7 +49,7 @@ public class AuthenticationClient : IAuthenticationService
         var loginJSON = JsonSerializer.Serialize(loginRequest); 
         var response = await _httpClient.PostAsync(
             "api/login",
-            new StringContent(loginJSON, Encoding.UTF8, "applicatoin/json"),
+            new StringContent(loginJSON, Encoding.UTF8, "application/json"),
             cancellationToken
         );
         var loginResult = JsonSerializer.Deserialize<LoginResponse>(await response.Content.ReadAsStringAsync());
