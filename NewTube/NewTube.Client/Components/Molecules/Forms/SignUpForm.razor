@@ -1,9 +1,10 @@
-﻿@rendermode InteractiveAuto
+﻿@rendermode InteractiveWebAssembly
 
 @using NewTube.Shared.DataTransfer
 @using NewTube.Shared.Interfaces
 
 @inject IAuthenticationService _authService
+@inject NavigationManager _navigationManager
 
 <TableWrapper>
     <LabeledInputTableRow label="Email Address:" type="email"/>
@@ -20,7 +21,7 @@
 @code {
     private SignUpRequest signUpRequest { get; set; } = new SignUpRequest();
     private async void Submit() {
-        Console.WriteLine("submit signup");
         SignUpResponse result = await _authService.RegisterUserAsync(signUpRequest);
+        _navigationManager.NavigateTo("/");
     }
 }

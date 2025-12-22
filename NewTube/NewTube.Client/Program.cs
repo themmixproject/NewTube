@@ -17,7 +17,7 @@ namespace NewTube.Client
             builder.Services.AddSingleton<HttpClient>(serviceProvider =>
             {
                 var client = new HttpClient();
-                client.BaseAddress = new Uri("http:" + builder.HostEnvironment.BaseAddress);
+                client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
                 return client;
             });
 
