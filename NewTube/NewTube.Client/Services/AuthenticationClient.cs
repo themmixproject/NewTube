@@ -52,7 +52,8 @@ public class AuthenticationClient : IAuthenticationService
             new StringContent(loginJSON, Encoding.UTF8, "application/json"),
             cancellationToken
         );
-        var loginResult = JsonSerializer.Deserialize<LoginResponse>(await response.Content.ReadAsStringAsync());
+        var responseString = await response.Content.ReadAsStringAsync();
+        var loginResult = JsonSerializer.Deserialize<LoginResponse>(responseString);
 
         if (!loginResult.isSuccessful)
         {
