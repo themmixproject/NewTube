@@ -4,6 +4,8 @@
 @rendermode InteractiveWebAssembly
 
 @inject IAuthenticationService _authService
+@inject NavigationManager _navigationManager
+@inject HttpClient _httpClient
 
 <TableWrapper> 
     <LabeledInputTableRow label="User Name:" type="text" placeholder="user name" @bind-value="loginRequest.UserName"/>
@@ -19,7 +21,10 @@
 
     private async void loginUser() {
         var response = await _authService.LoginUserAsync(loginRequest);
-        Console.WriteLine("thing");
+        
+        if (response.isSuccessful) {
+            _navigationManager.NavigateTo(_httpClient.BaseAddress.ToString());
+        }
     }
 }
 
