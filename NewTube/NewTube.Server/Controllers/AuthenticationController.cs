@@ -16,14 +16,15 @@ public class AuthenticationController : ControllerBase
 
     [Authorize]
     [HttpGet("state")]
-    public UserAuthenticationStateResponse GetUserState()
+    public  IActionResult GetUserState()
     {
         var response = new UserAuthenticationStateResponse
         {
             IsAuthenticated = User.Identity?.IsAuthenticated ?? false,
             UserName = User.Identity?.Name ?? "",
-            Claims = User.Claims
-        }
-        return Ok()
+            Claims = User.Claims.ToArray()
+        };
+
+        return Ok(response);
     }
 }

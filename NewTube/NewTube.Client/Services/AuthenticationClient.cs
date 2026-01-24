@@ -14,16 +14,13 @@ public class AuthenticationClient : IAuthenticationService
 {
     private readonly HttpClient _httpClient;
     private readonly AuthenticationStateProvider _authenticationStateProvider;
-    private readonly ICookieService _cookieService;
 
     public AuthenticationClient(
         AuthenticationStateProvider authenticationStateProvider,
-        HttpClient httpClient,
-        ICookieService cookieService
+        HttpClient httpClient
     ) {
         _httpClient = httpClient;
         _authenticationStateProvider = authenticationStateProvider;
-        _cookieService = cookieService;
     }
 
     public async Task<SignUpResponse> RegisterUserAsync(
@@ -55,20 +52,17 @@ public class AuthenticationClient : IAuthenticationService
         var responseString = await response.Content.ReadAsStringAsync();
         var loginResult = JsonSerializer.Deserialize<LoginResponse>(responseString);
 
-        if (!loginResult.isSuccessful)
-        {
-            return loginResult;
-        }
-
-        await _cookieService.SetAsync("authToken", loginResult.token);
-        ((ClientAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(loginRequest.UserName);
+        ((ClientAuthenticationStateProvider)_authenticationStateProvider).NotifyAuthenticationStateChanged();
 
         return loginResult;
     }
 
     public async Task Logout()
     {
-        await _cookieService.RemoveAsync("authToken");
+        // Call the server logout endpoint
+        await _httpClient.PostAsync("api/login/logout", null);
+        
         ((ClientAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsLoggedOut();
+        ((ClientAuthenticationStateProvider)_authenticationStateProvider).NotifyAuthenticationStateChanged();
     }
 }

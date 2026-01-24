@@ -23,7 +23,7 @@
         var response = await _authService.LoginUserAsync(loginRequest);
         
         if (response.isSuccessful) {
-            _navigationManager.NavigateTo(_httpClient.BaseAddress.ToString());
+            _navigationManager.NavigateTo(_navigationManager.Uri, true);
         }
     }
 }

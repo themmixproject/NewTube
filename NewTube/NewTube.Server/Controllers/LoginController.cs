@@ -23,7 +23,8 @@ namespace NewTube.Server.Controllers
             IAuthenticationService authenticationService,
             IConfiguration configuration,
             SignInManager<ApplicationUser> signInManager
-        ) {
+        )
+        {
             _authenticationService = authenticationService;
             _configuration = configuration;
             _signInManager = signInManager;
@@ -59,6 +60,13 @@ namespace NewTube.Server.Controllers
 
             loginResponse.token = new JwtSecurityTokenHandler().WriteToken(token);
             return Ok(loginResponse);
+        }
+
+        [HttpPost("logout")]
+        public async Task<IActionResult> LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
+            return Ok(new { success = true });
         }
     }
 }
